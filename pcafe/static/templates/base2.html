@@ -1,0 +1,278 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+
+<title>Pantry Cafe</title>
+<link rel="shortcut icon" href="/static/images/Pantry-Logo.png">
+
+<script type="text/javascript" src="/static/js/stick_kit_min.js"></script> 
+
+<script type="text/javascript" src="/static/js/jquery_min.js"></script>
+<link rel="stylesheet" href="/static/styles/how-order.css">
+<link rel="stylesheet" type="text/css" media="screen" href="/static/styles/main_css.css" />
+<link rel="stylesheet" href="/static/styles/order_history.css">
+<link rel="stylesheet" type="text/css" media="screen" href="/static/styles/register_css.css" />
+
+<link rel="stylesheet" href="/static/styles/css.css">
+
+<link rel="stylesheet" href="/static/styles/confirmation_css.css">
+
+
+
+
+<script type="text/javascript">
+       $(window).load(function () {
+         
+           $("#tempCateories").stick_in_parent();
+           
+           $("#stick_me").stick_in_parent();
+       });
+    
+  </script>
+  <style type="text/css">
+  .colspecs 
+{
+    color: #FFF;
+    padding: 3px 0px 3px 10px;
+    padding-top: 3px;
+    padding-right: 0px;
+    padding-bottom: 3px;
+    padding-left: 10px;
+    text-align: left;
+    background-color: #B5A697;
+}
+</style>
+  
+</head>
+
+
+
+<body>
+<style type="text/css">
+  #primary_nav_wrap{
+    width: 1003px;
+    height: auto;
+    margin: 0 auto;
+    z-index: 10;
+    position: relative;
+    overflow: hidden;
+  }
+  #wrapper{
+    margin-top: 25px;
+    padding-top: 5px;
+  }
+  .ul_div{
+    display: none;
+    left: 13px !important;
+  }
+  .profile:hover + .ul_div{
+    display: inline-block;
+    left: 13px !important;
+  }
+  #primary_nav_wrap{
+    height: 130px !important;
+  }
+</style>
+<div id="topbar">
+  <nav id="primary_nav_wrap">
+    <li class="hello">Hello , {{user_details.first_name}}</li>
+    <ul style="  margin-left: 38px;">
+
+      <li>
+        <a href="/myprofile" class="profile">My Profile</a>
+        <ul class="ul_div">
+          <li><a href="orderhistory">Order History</a></li>
+          <!-- <li><a href="#">Order History(oranic)</a></li> -->
+          <!-- <li><a href="#">Favourite Restaurants</a></li> -->
+          <!-- <li><a href="#">Order From More Restaurant</a>  </li> -->
+          <!-- <li><a href="#">Rewards Balance</a></li> -->
+          <li><a href="/checkout">Checkout</a></li>
+        </ul>    
+      </li>
+    </ul>
+    <li class="logout"><a href="/logout">Log Out</a></li>
+  </nav>
+</div>
+  <div id="wrapper" style="z-index: 1 !important;">
+    <header id="header_main">
+    
+     <!--top nav bar-->
+      <div id="home_page_login">
+<div style="clear:both;"></div>
+      
+        
+        
+      </div>
+      
+      <ul id="nav_topbar">
+       <!--  <li><span id="selected_region" style="position:relative;bottom:23px; color:#fff; font-weight:bold;left:35px">Dubai</span> -->
+         
+         
+        </li>
+      </ul>
+      
+      <!--top nav bar-->
+      
+      
+       <p style="color:red;color: #F00;position: relative;left: 721px;bottom: 22px;"> {{errormsg}}</p>
+      <div id="header_main_inner" style="margin-top: ;">
+          <a href="/" title="Pantry Logo">
+            <img src="/static/images/Pantry-Logo.png" alt="logo" class="logo_top"/>
+          </a>
+          
+          
+        <!-- <img src="/static/images/chef.png" id="chef" width="136" height="150" alt="RSD Chef" /> -->
+        
+
+        
+        
+        <nav>
+          <div id="subnav">
+            <ul>
+              <li> <a href="/">HOME</a> </li>
+              <li style="width: 25% !important;"> <a href="/myprofile">MY PROFILE</a> </li>
+              <li> <a href="/howtoorder">FAQ</a> </li>
+              <li style="width: 26%;"> <a href="/contactus">CONTACT US</a> </li>
+            </ul>
+          </div>
+        </nav>
+
+        <div class="social">
+          <ul>
+            <li> 
+              <a href="https://www.facebook.com/PantryCafe">
+                <img src="http://pantrycafe.me/wp-content/uploads/2015/07/f.png?ad7211">  
+              </a> 
+            </li>
+            <li> 
+              <a href="https://twitter.com/pantry_cafe">
+                <img src="http://pantrycafe.me/wp-content/uploads/2015/07/t.png?ad7211">  
+              </a> 
+            </li>
+            <li> 
+              <a href="https://instagram.com/pantry_cafe/">
+                <img src="http://pantrycafe.me/wp-content/uploads/2015/07/i.png?ad7211">  
+              </a> 
+            </li>
+            <li> 
+              <a href="https://www.pinterest.com/pantrycafeme/">
+                <img src="http://pantrycafe.me/wp-content/uploads/2015/07/p.png?ad7211">  
+              </a> 
+            </li>
+          </ul>
+        </div>
+        
+      </div>
+    </header>
+    
+    
+    <!--header ends-->
+    
+    
+    
+    
+    <div id="slideshow_wrapper" style="margin-top: -10px;">
+      <div id="slider">
+          <div class="container">
+              <div class="slide">
+                  <img src="/static/images/Pantry-Cafe-Banner.jpg">
+              </div>
+              <div class="slide">
+                  <img src="/static/images/Pantry-Cafe-Banner2.jpg">
+              </div>
+              <div class="slide">
+                  <img src="/static/images/Pantry-Cafe-Banner3.jpg">
+              </div>
+          </div>
+      </div>
+      <nav id="slider-nav" style="display: none;"></nav>    
+    </div>
+ 
+   
+    
+    
+    
+    <div id="content_home" style="margin-left: 14px;width: 970px;">
+      <div class="note_section">
+        <div class="note_point">
+          <h4>Note</h4>
+        </div>
+        <div class="note_content">
+          <h4>
+            Deliveries from 7pm to 11pm every Friday Deliveries from 12pm  - 11pm Saturday to Thursday
+          </h4>
+        </div>
+      </div>
+    </div>
+ 
+   
+    
+    
+    
+    <div id="content_home">
+      {% block content %} {% endblock %}    
+     
+     
+    </div>
+      
+      
+  </div>
+  <!-- wrapper ends -->
+  <div class="footer">
+    <h5>@Copyright</h5>
+  </div>
+
+
+<script src="/static/js/datepicker_jquery.js"></script>  
+  <script src="/static/js/datepicker.js"></script>  
+
+  <script type="text/javascript">
+    (function($) {
+
+    var $slider = $('#slider'),
+        $container = $slider.find('.container'),
+        $nav = $('#slider-nav'),
+        $slide = $container.children(),
+        s_length = $slide.length,
+        s_wide = $slider.width() * s_length,
+        s_height = $slider.height(),
+        autoSlide = null;
+
+    $container.css({
+        'position':'relative',
+        'width':s_wide,
+        'height':s_height
+    });
+
+    $slide.each(function(index) {
+        var i = index + 1;
+        $nav.append('<a href="#slide-'+i+'">'+i+'</a>');
+        $(this).attr('id', 'slide-'+i);
+    });
+
+    $nav.find('a').on("click", function(pos) {
+        $nav.find('.active').removeClass('active');
+        $(this).addClass('active');
+        pos = $(this).index() * $slider.width();
+        $container.animate({left:'-'+pos+'px'}, 600);
+        clearInterval(autoSlide);
+        autoSlide = setInterval(slideShow, 3000);
+        return false;
+    }).first().addClass('active');
+
+    function slideShow() {
+        if ($nav.find('.active').next().length) {
+            $nav.find('.active').next().trigger("click");
+        } else {
+            $nav.find('a').first().trigger("click");
+        }
+    } autoSlide = setInterval(slideShow, 3000);
+
+})(jQuery);
+  </script>
+
+
+
+</body>
+</html>

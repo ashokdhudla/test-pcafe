@@ -1,0 +1,1097 @@
+{%extends "base.html"%}
+{% block content %} 
+  
+    <div id="content_home">       
+    <div id="stick_me" class="">
+     <span id="ContentPlaceHolder1_UpdatePanel2">
+     
+      
+      </span> </div>
+
+
+      <section id="list_categories">
+         <div id="tempCateories">
+          <div id="categories_container">
+            <h1><b>Categories</b></h1>
+            <div id="ContentPlaceHolder1_categories">
+              <ul id='list_ul_categories'>
+                <li>
+                  <a clientidmode='Static' class="trigger" title='ALL DAY BREAKFAST'>
+                    BREAKFAST
+                    <span></span>
+                  </a>
+                  <ul class="submenu">     
+                      <li><a  href='#FRUITS&GRAINS' clientidmode='Static' title='FRUITS & GRAINS'>FRUITS & GRAINS</a></li>     
+                      <li><a href='#BREAKFAST&SANDWICHES' clientidmode='Static' title='BREAKFAST SANDWICHES'>BREAKFAST SANDWICHES</a></li>     
+                      <li><a href='#MORNING&MEALS' clientidmode='Static' title='MORNING MEALS'>MORNING MEALS</a></li> 
+                      <li><a href='#ORGANIC&EGGS' clientidmode='Static' title='ORGANIC EGGS'>ORGANIC EGGS</a></li>     
+                      <li><a href='#BREAKFAST&SWEETS' clientidmode='Static' title='BREAKFAST SWEETS'>BREAKFAST SWEETS</a></li> 
+                      <li><a href='#BREAKFAST&SIDES' clientidmode='Static' title='BREAKFAST SIDES'>BREAKFAST SIDES</a></li> 
+                  </ul> 
+                </li>
+                <li>
+                  <a clientidmode='Static' class="trigger" title='LIGHT MEALS'>
+                    LIGHT MEALS
+                    <span></span>
+                  </a>
+                  <ul class="submenu">     
+                      <li><a  href='#SALADS' clientidmode='Static' title='SALADS'>SALADS</a></li>     
+                      <li><a href='#SHAREABLES' clientidmode='Static' title='SHAREABLES'>SHAREABLES</a></li>     
+                      <li><a href='#SANDWICHES&BURGERS' clientidmode='Static' title='SANDWICHES & BURGERS'>SANDWICHES & BURGERS</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a clientidmode='Static' class="trigger" title='MAINS & GRILL'>
+                    MAINS & GRILL
+                    <span></span>
+                  </a>
+                  <ul class="submenu">     
+                      <li><a  href='#MAINS' clientidmode='Static' title='MAINS'>MAINS</a></li>     
+                      <li><a href='#FROMTHEGRILL' clientidmode='Static' title='FROM THE GRILL'>FROM THE GRILL</a></li>     
+                      <li><a href='#SIDES' clientidmode='Static' title='SIDES'>SIDES</a></li> 
+                  </ul> 
+                </li>
+                <li>
+                  <a clientidmode='Static' class="trigger" title='KIDS MENU'>
+                    PIZZA
+                    <span></span>
+                  </a>
+                  <ul class="submenu">     
+                      <li><a href='#PIZZA' clientidmode='Static' title='PIZZA'>PIZZA<span></span></a></li>     
+                      <li><a href='#BYO&PIZZA' clientidmode='Static' title='MAINS'>BYO PIZZA</a></li>
+                  </ul> 
+                </li>
+                <li>
+                  <a clientidmode='Static' class="trigger" title='KIDS MENU'>
+                    KIDS MENU
+                    <span></span>
+                  </a>
+                  <ul class="submenu">     
+                      <li><a  href='#BREAKFAST' clientidmode='Static' title='BREAKFAST'>BREAKFAST</a></li>     
+                      <li><a href='#KIDSMAINS' clientidmode='Static' title='MAINS'>MAINS</a></li>
+                  </ul> 
+                </li>
+                <li><a href='#DESSERTS' clientidmode='Static' title='DESSERTS'>DESSERTS<span></span></a></li>
+                <li>
+                  <a clientidmode='Static' class="trigger" title='TEAs & COFFEEs'>
+                    TEAs & COFFEEs
+                    <span></span>
+                  </a>
+                  <ul class="submenu">     
+                      <li><a  href='#HOT&COFFEE' clientidmode='Static' title='HOT COFFEE'>HOT COFFEE</a></li>     
+                      <li><a href='#COLD&COFFEE' clientidmode='Static' title='COLD COFFEE'>COLD COFFEE</a></li>     
+                      <li><a href='#TEA' clientidmode='Static' title='TEA'>TEA</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a clientidmode='Static' class="trigger" title='SHAKES, SMOOTHIES & JUICES'>
+                    SHAKES, SMOOTHIES & JUICES
+                    <span></span>
+                  </a>
+                  <ul class="submenu">     
+                      <li><a  href='#SMOOTHIES' clientidmode='Static' title='SMOOTHIES'>SMOOTHIES</a></li>     
+                      <li><a href='#MILK&SHAKES' clientidmode='Static' title='MILK SHAKES'>MILK SHAKES</a></li>     
+                      <li><a href='#SPARKLERS' clientidmode='Static' title='SPARKLERS'>SPARKLERS</a></li> 
+                      <li><a href='#FRESH&JUICES' clientidmode='Static' title='FRESH JUICES'>FRESH JUICES</a></li>     
+                      <li><a href='#BOTTLED&JUICES' clientidmode='Static' title='BOTTLED JUICES'>BOTTLED JUICES</a></li> 
+                  </ul> 
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div id="receipes_wrapper">
+          <div id="ContentPlaceHolder1_UpdatePanel1">
+          
+            <div id="ContentPlaceHolder1_receipes"><span class='span_currency'>AED</span><a class='selectec_category_heading' name='ALLDAYBREAKFAST'>BREAKFAST</a>
+              <a class='selectec_category_heading' name='FRUITS&GRAINS'>FRUITS & GRAINS</a>
+
+              {% for fgobj in FruitGrain_list %} 
+              <form action="/orderitem" method="POST">
+              {% csrf_token %}
+              <h2 class='cat_heading'>{{fgobj.item_name}}</h2>
+              <div class='cat_detail'>
+                <div class='r_left'>
+                  <p>{{fgobj.ingrediants}}</p>
+                </div>
+                <div class='r_right'>
+                  <div class='actioner'>
+                    <p class='price'><span class='item_price'>{{fgobj.price}}</span></p>
+                    <p class='add_to_cart'>Qty:
+                      <input type='text' value='1' size='10' name="quantity"/>
+                      <input type="hidden" value="{{fgobj.item_id}}" name="itemid"/>
+                      <input type="hidden" value="{{fgobj.sub_cat_id}}" name="subcatid"/>
+                      <input type="hidden" value="{{fgobj.cat_id}}" name="cat_id"/>
+                      <input type='submit' value='+ ADD' />
+                    </p>
+                  </div>
+                </div>
+              </div>
+              </form>
+              {% endfor %}
+
+              <a class='selectec_category_heading' name='BREAKFAST&SANDWICHES'>BREAKFAST SANDWICHES</a>
+              {% for sdobj in Sandwitch_list%}
+              <form action="/orderitem" method="POST">
+              {% csrf_token %}
+              <h2 class='cat_heading'>{{sdobj.item_name}}</h2>
+              <div class='cat_detail'>
+                <div class='r_left'>
+                  <p>{{sdobj.ingrediants}}</p>
+                </div>
+                <div class='r_right'>
+                  <div class='actioner'>
+                    <p class='price'><span class='item_price'>{{sdobj.price}}</span></p>
+                    <p class='add_to_cart'>Qty:
+                      <input type='text' value='1' size='10' name="quantity"/>
+                      <input type="hidden" value="{{sdobj.item_id}}" name="itemid"/>
+                      <input type="hidden" value="{{sdobj.sub_cat_id}}" name="subcatid"/>
+                      <input type="hidden" value="{{sdobj.cat_id}}" name="cat_id"/>
+                      <input type='submit' value='+ ADD' />
+                    </p>
+                  </div>
+                </div>
+              </div>
+              </form>
+              {% endfor %}
+              <a class='selectec_category_heading' name='MORNING&MEALS'>MORNING MEALS</a>
+              {% for mobj in Meals_list%}
+              <form action="/orderitem" method="POST">
+              {% csrf_token %}
+              <h2 class='cat_heading'>{{mobj.item_name}}</h2>
+              <div class='cat_detail'>
+                <div class='r_left'>
+                  <p>{{mobj.ingrediants}}</p>
+                  
+                </div>
+                <div class='r_right'>
+                  <div class='actioner'>
+                    <p class='price'><span class='item_price'>{{mobj.price}}</span></p>
+                    <p class='add_to_cart'>Qty:
+                      <input type='text' value='1' size='10' name="quantity"/>
+                      <input type="hidden" value="{{mobj.item_id}}" name="itemid"/>
+                      <input type="hidden" value="{{mobj.sub_cat_id}}" name="subcatid"/>
+                      <input type="hidden" value="{{mobj.cat_id}}" name="cat_id"/>
+                      <input type='submit' value='+ ADD' />
+                    </p>
+                  </div>
+                </div>
+              </div>
+              </form>
+              {% endfor%}
+              <a class='selectec_category_heading' name='ORGANIC&EGGS'>ORGANIC EGGS</a>
+              {%for eobj in Eggs_list %}
+              <form action="/orderitem" method="POST">
+              {% csrf_token %}
+              <h2 class='cat_heading'>{{eobj.item_name}}</h2>
+              <div class='cat_detail'>
+                <div class='r_left'>
+                  <p>{{eobj.ingrediants}}</p>
+                </div>
+                <div class='r_right'>
+                  <div class='actioner'>
+                    <p class='price'><span class='item_price'>{{eobj.price}}</span></p>
+                    <p class='add_to_cart'>Qty:
+                      <input type='text' value='1' size='10' name="quantity"/>
+                      <input type="hidden" value="{{eobj.item_id}}" name="itemid"/>
+                      <input type="hidden" value="{{eobj.sub_cat_id}}" name="subcatid"/>
+                      <input type="hidden" value="{{eobj.cat_id}}" name="cat_id"/>
+                      <input type='submit' value='+ ADD' />
+                    </p>
+                  </div>
+                </div>
+              </div>
+              </form>
+              {%endfor%}
+              <a class='selectec_category_heading' name='BREAKFAST&SWEETS'>BREAKFAST SWEETS</a>
+              {% for sobj in Sweets_list%}
+              <form action="/orderitem" method="POST">
+              {% csrf_token %}
+              <h2 class='cat_heading'>{{sobj.item_name}}</h2>
+              <div class='cat_detail'>
+                <div class='r_left'>
+                  <p>{{sobj.ingrediants}}</p>
+                </div>
+                <div class='r_right'>
+                  <div class='actioner'>
+                    <p class='price'><span class='item_price'>{{sobj.price}}</span></p>
+                    <p class='add_to_cart'>Qty:
+                      <input type='text' value='1' size='10' name="quantity"/>
+                      <input type="hidden" value="{{sobj.item_id}}" name="itemid"/>
+                      <input type="hidden" value="{{sobj.sub_cat_id}}" name="subcatid"/>
+                      <input type="hidden" value="{{sobj.cat_id}}" name="cat_id"/>
+                      <input type='submit' value='+ ADD' />
+                    </p>
+                  </div>
+                </div>
+              </div>
+              </form>
+              {%endfor%}
+              <a class='selectec_category_heading' name='BREAKFAST&SIDES'>BREAKFAST SIDES</a>
+              {% for sdobj in Sides_list%}
+              <form action="/orderitem" method="POST">
+              {% csrf_token %}
+              <h2 class='cat_heading'>{{sdobj.item_name}}</h2>
+              <div class='cat_detail'>
+                <div class='r_left'>
+                  <p>{{sdobj.ingrediants}}</p>                
+                </div>
+                <div class='r_right'>
+                  <div class='actioner'>
+                    <p class='price'><span class='item_price'>{{sdobj.price}}</span></p>
+                    <p class='add_to_cart'>Qty:
+                      <input type='text' value='1' size='10' name="quantity"/>
+                      <input type="hidden" value="{{sdobj.item_id}}" name="itemid"/>
+                      <input type="hidden" value="{{sdobj.sub_cat_id}}" name="subcatid"/>
+                      <input type="hidden" value="{{sdobj.cat_id}}" name="cat_id"/>
+                      <input type='submit' value='+ ADD' />
+                    </p>
+                  </div>
+                </div>
+              </div>
+              </form>
+              {%endfor%}
+
+              <a class='selectec_category_heading' name='SALADS'>SALADS</a>
+              {% for sdobj in l_saladslist%}
+              <form action="/orderitem" method="POST">
+              {% csrf_token %}
+              <h2 class='cat_heading'>{{sdobj.item_name}}</h2>
+              <div class='cat_detail'>
+                <div class='r_left'>
+                  <p>{{sdobj.ingrediants}}</p>
+                </div>
+                <div class='r_right'>
+                  <div class='actioner'>
+                    <p class='price'><span class='item_price'>{{sdobj.price}}</span></p>
+                    <!-- <div id='cls_extra_add_on_1' class='cls_extra_add_on'><span>Choice of:</span>
+                      <select id='extra_option1'>
+                        <option value=''>Plain</option>
+                        <option value=''>Peri Peri dusted</option>
+                      </select>
+                    </div>-->
+                     <p class='add_to_cart'>Qty:
+                      <input type='text' value='1' size='10' name="quantity"/>
+                      <input type="hidden" value="{{sdobj.item_id}}" name="itemid"/>
+                      <input type="hidden" value="{{sdobj.sub_cat_id}}" name="subcatid"/>
+                      <input type="hidden" value="{{sdobj.cat_id}}" name="cat_id"/>
+                      <input type='submit' value='+ ADD' />
+                    </p>
+                  </div>
+                </div>
+              </div>
+              </form>
+             {%endfor%}
+              <a class='selectec_category_heading' name='SHAREABLES'>SHAREABLES</a>
+              {% for shobj in lm_shareablelist %}
+              <form action="/orderitem" method="POST">
+              {% csrf_token %}
+              <h2 class='cat_heading'>{{shobj.item_name}}</h2>
+              <div class='cat_detail'>
+                <div class='r_left'>
+                  <p>{{shobj.ingrediants}}</p>
+                </div>
+                <div class='r_right'>
+                  <div class='actioner'>
+                    <p class='price'><span class='item_price'>{{shobj.price}}</span></p>
+                    <!-- <div id='cls_extra_add_on_1' class='cls_extra_add_on'><span>Choice of:</span>
+                      <select id='extra_option1'>
+                        <option value=''>Carrot</option>
+                        <option value=''>Chocolate</option>
+                      </select> 
+                    </div>-->
+                    <p class='add_to_cart'>Qty:
+                      <input type='text' value='1' size='10' name="quantity" />
+                      <input type="hidden" value="{{shobj.item_id}}" name="itemid"/>
+                      <input type="hidden" value="{{shobj.sub_cat_id}}" name="subcatid"/>
+                      <input type="hidden" value="{{shobj.cat_id}}" name="cat_id"/>
+                      <input type='submit' value='+ ADD' />
+                    </p>
+                  </div>
+                </div>
+              </div>
+              </form>
+              {%endfor%}
+              <a class='selectec_category_heading' name='SANDWICHES&BURGERS'>SANDWICHES & BURGERS</a>
+              {%for sdobj in lm_sand_burgerlist %}
+              <form action="/orderitem" method="POST">
+              {% csrf_token %}
+              <h2 class='cat_heading'>{{sdobj.item_name}}</h2>
+              <div class='cat_detail'>
+                <div class='r_left'>
+                  <p>{{sdobj.ingrediants}}</p>
+                </div>
+                <div class='r_right'>
+                  <div class='actioner'>
+                    <p class='price'><span class='item_price'>{{sdobj.price}}</span></p>
+                    <!-- <div id='cls_extra_add_on_1' class='cls_extra_add_on'><span>Choice of:</span>
+                      <select id='extra_option1'>
+                        <option value=''>Carrot</option>
+                        <option value=''>Chocolate</option>
+                      </select>
+                    </div> -->
+                    <p class='add_to_cart'>Qty:
+                      <input type='text' value='1' size='10' name="quantity"/>
+                      <input type="hidden" value="{{sdobj.item_id}}" name="itemid"/>
+                      <input type="hidden" value="{{sdobj.sub_cat_id}}" name="subcatid"/>
+                      <input type="hidden" value="{{sdobj.cat_id}}" name="cat_id"/>
+                      <input type='submit' value='+ ADD' />
+                    </p>
+                  </div>
+                </div>
+              </div>
+              </form>
+              {%endfor%}
+
+              <a class='selectec_category_heading' name='MAINS'>MAINS</a>
+              {% for mainobj in mains_list%}
+              <form action="/orderitem" method="POST">
+              {% csrf_token %}
+              <h2 class='cat_heading'>{{mainobj.item_name}}</h2>
+              <div class='cat_detail'>
+                <div class='r_left'>
+                  <p>{{mainobj.ingrediants}}</p>
+                </div>
+                <div class='r_right'>
+                  <div class='actioner'>
+                    <p class='price'><span class='item_price'>{{mainobj.price}}</span></p>
+                    <!-- <div id='cls_extra_add_on_1' class='cls_extra_add_on'><span>Choice of:</span>
+                      <select id='extra_option1'>
+                        <option value=''>Carrot</option>
+                        <option value=''>Chocolate</option>
+                      </select>
+                    </div> -->
+                    <p class='add_to_cart'>Qty:
+                      <input type='text' value='1' size='10' name="quantity"/>
+                      <input type="hidden" value="{{mainobj.item_id}}" name="itemid"/>
+                      <input type="hidden" value="{{mainobj.sub_cat_id}}" name="subcatid"/>
+                      <input type="hidden" value="{{mainobj.cat_id}}" name="cat_id"/>
+                      <input type='submit' value='+ ADD' />
+                    </p>
+                  </div>
+                </div>
+              </div>
+              </form>
+              {%endfor%}
+              
+              <a class='selectec_category_heading' name='FROMTHEGRILL'>FROM THE GRILL</a>
+              {%for fgobj in grill_list %}
+              <form action="/orderitem" method="POST">
+              {% csrf_token %}
+              <h2 class='cat_heading'>{{fgobj.item_name}}</h2>
+              <div class='cat_detail'>
+                <div class='r_left'>
+                  <p>{{fgobj.ingrediants}}</p>
+                </div>
+                <div class='r_right'>
+                  <div class='actioner'>
+                    <p class='price'><span class='item_price'>{{fgobj.price}}</span></p>
+                    <!-- <div id='cls_extra_add_on_1' class='cls_extra_add_on'><span>Choice of:</span>
+                      <select id='extra_option1'>
+                        <option value=''>Carrot</option>
+                        <option value=''>Chocolate</option>
+                      </select>
+                    </div> -->
+                    <p class='add_to_cart'>Qty:
+                      <input type='text' value='1' size='10' name="quantity"/>
+                      <input type="hidden" value="{{fgobj.item_id}}" name="itemid"/>
+                      <input type="hidden" value="{{fgobj.sub_cat_id}}" name="subcatid"/>
+                      <input type="hidden" value="{{fgobj.cat_id}}" name="cat_id"/>
+                      <input type='submit' value='+ ADD' />
+                    </p>
+                  </div>
+                </div>
+              </div>
+              </form>
+              {%endfor%}
+              <a class='selectec_category_heading' name='SIDES'>SIDES</a>
+              {% for sdobj in main_sides_list%}
+              <form action="/orderitem" method="POST">
+              {% csrf_token %}
+              <h2 class='cat_heading'>{{sdobj.item_name}}</h2>
+              <div class='cat_detail'>
+                <div class='r_left'>
+                  <p>{{sdobj.ingrediants}}</p>
+                </div>
+                <div class='r_right'>
+                  <div class='actioner'>
+                    <p class='price'><span class='item_price'>{{sdobj.price}}</span></p>
+                    <!-- <div id='cls_extra_add_on_1' class='cls_extra_add_on'><span>Choice of:</span>
+                      <select id='extra_option1'>
+                        <option value=''>Carrot</option>
+                        <option value=''>Chocolate</option>
+                      </select>
+                    </div> -->
+                    <p class='add_to_cart'>Qty:
+                      <input type='text' value='1' size='10' name="quantity"/>
+                      <input type="hidden" value="{{sdobj.item_id}}" name="itemid"/>
+                      <input type="hidden" value="{{sdobj.sub_cat_id}}" name="subcatid"/>
+                      <input type="hidden" value="{{sdobj.cat_id}}" name="cat_id"/>
+                      <input type='submit' value='+ ADD' />
+                    </p>
+                  </div>
+                </div>
+              </div>
+              </form>
+              {% endfor%}
+              
+              <a class='selectec_category_heading' name='PIZZA'>PIZZA</a>
+              {% for pizzaobj in pizzalist %}
+              <form action="/orderitem" method="POST">
+              {% csrf_token %}
+              <h2 class='cat_heading'>{{pizzaobj.item_name}}</h2>
+              <div class='cat_detail'>
+                <div class='r_left'>
+                  <p class='item_no'>{{pizzaobj.ingrediants}}</p>
+                </div>
+                <div class='r_right'>
+                  <div class='actioner'>
+                    <p class='price'><span class='item_price'>{{pizzaobj.price}}</span></p>
+                    <!-- <div id='cls_extra_add_on_1' class='cls_extra_add_on'><span>Choice of:</span>
+                      <select id='extra_option1'>
+                        <option value=''>Carrot</option>
+                        <option value=''>Chocolate</option>
+                      </select>
+                    </div> -->
+                    <p class='add_to_cart'>Qty:
+                      <input type='text' value='1' size='10' name="quantity"/>
+                      <input type="hidden" value="{{pizzaobj.item_id}}" name="itemid"/>
+                      <input type="hidden" value="{{pizzaobj.sub_cat_id}}" name="subcatid"/>
+                      <input type="hidden" value="{{pizzaobj.cat_id}}" name="cat_id"/>
+                      <input type='submit' value='+ ADD' />
+                    </p>
+                  </div>
+                </div>
+              </div>
+              </form>
+               {% endfor %}
+
+              <a class='selectec_category_heading' name='BYO&PIZZA'>BYO PIZZA</a>
+              <div class='r_right'>
+                <div class='actioner'>
+                  <p class='add_to_cart'>
+                    <input type="hidden" value="{{pizzaobj.item_id}}" name="itemid"/>
+                    <input type="hidden" value="{{pizzaobj.sub_cat_id}}" name="subcatid"/>
+                    <input type="hidden" value="{{pizzaobj.cat_id}}" name="cat_id"/>
+                    <a style="width: 175px;text-align: center;padding: 4px 7px;position: absolute;right: -21px;" class="popup" href="#openModal">
+                      MAKE YOU OWN PIZZA
+                    </a>
+                  </p>
+                </div>
+              </div>
+              <!---------->
+
+              <div id="openModal" class="modalDialog">
+                  <div> 
+                      <a href="#close" title="Close" class="close">X</a>
+
+                      <h3 style="margin-bottom: 10px;margin-top: 10px;">
+                        Quantity
+                        <input type="text" value="1" style="width: 40px;">
+                      </h3>
+                      <h3 style="margin-top: 10px;">
+                        Choose your size
+                      </h3>
+
+                      <fieldset>
+                        <div class="some-class">
+                          <input type="radio" class="radio" name="x" value="y" id="y" />
+                          <label for="y">Small</label>
+                          <input type="radio" class="radio" name="x" value="z" id="z" />
+                          <label for="z">Medium</label>
+                          <input type="radio" class="radio" name="x" value="z" id="z" />
+                          <label for="z">Large</label>
+                        </div>
+                      </fieldset>
+
+                      <h3 style="margin-top: 10px;">
+                        Choice of Sauce
+                      </h3>
+
+                      <fieldset>
+                        <div class="some-class">
+                          <input type="radio" class="radio" name="x" value="y" id="y" />
+                          <label for="y">White Sauce</label>
+                          <input type="radio" class="radio" name="x" value="z" id="z" />
+                          <label for="z">Red Sauce</label>
+                          <input type="radio" class="radio" name="x" value="z" id="z" />
+                          <label for="z">BBQ Sauce</label>
+                          <input type="radio" class="radio" name="x" value="z" id="z" />
+                          <label for="z">None</label>
+                        </div>
+                      </fieldset>
+
+                      <h3 style="margin-top: 10px;">
+                        Choice of Cheese
+                      </h3>
+
+                      <fieldset>
+                        <div class="some-class">
+                          <input type="radio" class="radio" name="x" value="y" id="y" />
+                          <label for="y">Regular Cheese</label>
+                          <input type="radio" class="radio" name="x" value="z" id="z" />
+                          <label for="z">Extra Cheese (add ED 3.00)</label>
+                        </div>
+                      </fieldset>
+
+                      <h3 style="margin-top: 10px;">
+                        Choice of Options for Crust
+                      </h3>
+                      <fieldset>
+                        <div class="some-class">
+                          <input type="radio" class="radio" name="x" value="y" id="y" />
+                          <label for="y">Regular Crust</label>
+                          <input type="radio" class="radio" name="x" value="z" id="z" />
+                          <label for="z">Gluten Free Crust(add ED 3.00)</label>
+                        </div>
+                      </fieldset>
+
+                      <h3 id="open_click_div" style="padding: 8px 0px;background-color: #888;margin-top: 10px;margin-bottom: 0px !important;cursor: pointer;">
+                        Choice of Options for Crust
+                      </h3>
+
+                      <div id="click_div" class="click_div">
+                        <div class="half_div_1">
+                          <img src="http://wahanda.cloudapp.net/static/images/wholePizza.png">
+                          <img src="http://wahanda.cloudapp.net/static/images/leftPizza.png">
+                          <img src="http://wahanda.cloudapp.net/static/images/rightPizza.png">
+                          <span>
+                            None
+                          </span>
+                          <span style="left: 135px;">
+                            Extra
+                          </span>
+                          <br />
+                          <fieldset>
+                            <div class="some-class">
+                              <input type="radio" class="radio" name="x" value="y" id="y" />
+                              <label for="y">Thing 1</label>
+                              <input type="radio" class="radio" name="x" value="z" id="z" />
+                              <label for="z">Thing 2</label>
+                            </div>
+                          </fieldset>
+                        </div>
+                        <div class="half_div_2">
+                          <img src="http://wahanda.cloudapp.net/static/images/wholePizza.png">
+                          <img src="http://wahanda.cloudapp.net/static/images/leftPizza.png">
+                          <img src="http://wahanda.cloudapp.net/static/images/rightPizza.png">
+                          <span>
+                            None
+                          </span>
+                          <span style="left: 135px;">
+                            Extra
+                          </span>
+                          <br />
+                          <fieldset>
+                            <div class="some-class">
+                              <input type="radio" class="radio" name="x" value="y" id="y" />
+                              <label for="y">Thing 1</label>
+                              <input type="radio" class="radio" name="x" value="z" id="z" />
+                              <label for="z">Thing 2</label>
+                            </div>
+                          </fieldset>
+                        </div>
+                      </div>
+                      <script type="text/javascript">
+                        $('#click_div').hide();
+                        $(document).ready(function(){
+                          $('#open_click_div').click(function(){
+                            $('#click_div').toggle();
+                          })
+
+                        });
+                      </script>
+
+                      <h3>
+                        Special Requests Additional charges may apply and will be charged on pickup or delivery.
+                      </h3>
+
+                      <div class="buttons_add_cart">
+                        <textarea rows="2" placeholder="Enter comment"></textarea>
+                        <input type="submit" value="Add to cart">
+                        <a href="#close" title="Close" class="close cancel">X</a>
+                      </div>
+                  </div>
+              </div>
+              <!---------->
+
+
+              <h1>Kids Menu</h1>
+              <a class='selectec_category_heading' name='BREAKFAST'>BREAKFAST</a>
+              {% for kbfobj in kids_bf_list%}
+              <form action="/orderitem" method="POST">
+              {% csrf_token %}
+              <h2 class='cat_heading'>{{kbfobj.item_name}}</h2>
+              <div class='cat_detail'>
+                <div class='r_left'>
+                  <p>{{kbfobj.ingrediants}}</p>
+                </div>
+                <div class='r_right'>
+                  <div class='actioner'>
+                    <p class='price'><span class='item_price'>{{kbfobj.price}}</span></p>
+                    <p class='add_to_cart'>Qty:
+                      <input type='text' value='1' size='10' name="quantity"/>
+                      <input type="hidden" value="{{kbfobj.item_id}}" name="itemid"/>
+                      <input type="hidden" value="{{kbfobj.sub_cat_id}}" name="subcatid"/>
+                      <input type="hidden" value="{{kbfobj.cat_id}}" name="cat_id"/>
+                      <input type='submit' value='+ ADD' />
+                    </p>
+                  </div>
+                </div>
+              </div>
+              </form>
+              {% endfor %}
+              <!-- -->
+              <a class='selectec_category_heading' name='KIDSMAINS'>MAINS</a>
+              {% for kbfobj in kids_main_list%}
+              <form action="/orderitem" method="POST">
+              {% csrf_token %}
+              <h2 class='cat_heading'>{{kbfobj.item_name}}</h2>
+              <div class='cat_detail'>
+                <div class='r_left'>
+                  <p>{{kbfobj.ingrediants}}</p>
+                </div>
+                <div class='r_right'>
+                  <div class='actioner'>
+                    <p class='price'><span class='item_price'>{{kbfobj.price}}</span></p>
+                    <p class='add_to_cart'>Qty:
+                      <input type='text' value='1' size='10' name="quantity"/>
+                      <input type="hidden" value="{{kbfobj.item_id}}" name="itemid"/>
+                      <input type="hidden" value="{{kbfobj.sub_cat_id}}" name="subcatid"/>
+                      <input type="hidden" value="{{kbfobj.cat_id}}" name="cat_id"/>
+                      <input type='submit' value='+ ADD' />
+                    </p>
+                  </div>
+                </div>
+              </div>
+              </form>
+              {% endfor %}
+
+              <h1>DESSERTS</h1>
+              <a class='selectec_category_heading' name='DESSERTS'>DESSERTS</a>
+              {% for dobj in dessertslist%}
+              <form action="/orderitem" method="POST">
+              {% csrf_token %}
+              <h2 class='cat_heading'>{{dobj.item_name}}</h2>
+              <div class='cat_detail'>
+                <div class='r_left'>
+                  <p>{{dobj.ingrediants}}</p>
+                </div>
+                <div class='r_right'>
+                  <div class='actioner'>
+                    <p class='price'><span class='item_price'>{{dobj.price}}</span></p>
+                    <p class='add_to_cart'>Qty:
+                      <input type='text' value='1' size='10' name="quantity"/>
+                      <input type="hidden" value="{{dobj.item_id}}" name="itemid"/>
+                      <input type="hidden" value="{{dobj.sub_cat_id}}" name="subcatid"/>
+                      <input type="hidden" value="{{dobj.cat_id}}" name="cat_id"/>
+                      <input type='submit' value='+ ADD' />
+                    </p>
+                  </div>
+                </div>
+              </div>
+              </form>
+              {% endfor %}
+              <!-- -->
+              <a class='selectec_category_heading' name='HOT&COFFEE'>HOT COFFEE</a>
+              {% for hcobj in hotcoffeelist%}
+              <form action="/orderitem" method="POST">
+              {% csrf_token %}
+              <h2 class='cat_heading'>{{hcobj.item_name}}</h2>
+              <div class='cat_detail'>
+                <div class='r_left'>
+                  <p>{{hcobj.ingrediants}}</p>
+                </div>
+                <div class='r_right'>
+                  <div class='actioner'>
+                    <p class='price'><span class='item_price'>{{hcobj.price}}</span></p>
+                    <!-- <div id='cls_extra_add_on_1' class='cls_extra_add_on'><span>Choice of:</span>
+                                          <select id='extra_option1'>
+                                            <option value=''>Carrot</option>
+                                            <option value=''>Chocolate</option>
+                                          </select>
+                                        </div> -->
+                    <p class='add_to_cart'>Qty:
+                      <input type='text' value='1' size='10' name="quantity"/>
+                      <input type="hidden" value="{{hcobj.item_id}}" name="itemid"/>
+                      <input type="hidden" value="{{hcobj.sub_cat_id}}" name="subcatid"/>
+                      <input type="hidden" value="{{hcobj.cat_id}}" name="cat_id"/>
+                      <input type='submit' value='+ ADD' />
+                    </p>
+                  </div>
+                </div>
+              </div>
+              </form>
+              {%endfor%}
+              <!---------->
+              <a class='selectec_category_heading' name='COLD&COFFEE'>COLD COFFEE</a>
+              {% for ccobj in coldcoffeelist%}
+              <form action="/orderitem" method="POST">
+              {% csrf_token %}
+              <h2 class='cat_heading'>{{ccobj.item_name}}</h2>
+              <div class='cat_detail'>
+                <div class='r_left'>
+                  <p>{{ccobj.ingrediants}}</p>
+                </div>
+                <div class='r_right'>
+                  <div class='actioner'>
+                    <p class='price'><span class='item_price'>{{ccobj.price}}</span></p>
+                    <!-- <div id='cls_extra_add_on_1' class='cls_extra_add_on'><span>Choice of:</span>
+                                          <select id='extra_option1'>
+                                            <option value=''>Carrot</option>
+                                            <option value=''>Chocolate</option>
+                                          </select>
+                                        </div> -->
+                    <p class='add_to_cart'>Qty:
+                      <input type='text' value='1' size='10' name="quantity"/>
+                      <input type="hidden" value="{{ccobj.item_id}}" name="itemid"/>
+                      <input type="hidden" value="{{ccobj.sub_cat_id}}" name="subcatid"/>
+                      <input type="hidden" value="{{ccobj.cat_id}}" name="cat_id"/>
+                      <input type='submit' value='+ ADD' />
+                    </p>
+                  </div>
+                </div>
+              </div>
+              </form>
+              {%endfor%}
+              
+              <!---------->
+              <a class='selectec_category_heading' name='TEA'>TEA</a>
+              {% for tobj in tealist%}
+              <form action="/orderitem" method="POST">
+              {% csrf_token %}
+              <h2 class='cat_heading'>{{tobj.item_name}}</h2>
+              <div class='cat_detail'>
+                <div class='r_left'>
+                  <p>{{tobj.ingrediants}}</p>
+                </div>
+                <div class='r_right'>
+                  <div class='actioner'>
+                    <p class='price'><span class='item_price'>{{tobj.price}}</span></p>
+                    <!-- <div id='cls_extra_add_on_1' class='cls_extra_add_on'><span>Choice of:</span>
+                                          <select id='extra_option1'>
+                                            <option value=''>Carrot</option>
+                                            <option value=''>Chocolate</option>
+                                          </select>
+                                        </div> -->
+                    <p class='add_to_cart'>Qty:
+                      <input type='text' value='1' size='10' name="quantity"/>
+                      <input type="hidden" value="{{tobj.item_id}}" name="itemid"/>
+                      <input type="hidden" value="{{tobj.sub_cat_id}}" name="subcatid"/>
+                      <input type="hidden" value="{{tobj.cat_id}}" name="cat_id"/>
+                      <input type='submit' value='+ ADD' />
+                    </p>
+                  </div>
+                </div>
+              </div>
+              </form>
+              {%endfor%}
+              
+              <!--1-------->
+              <a class='selectec_category_heading' name='SMOOTHIES'>SMOOTHIES</a>
+               {% for sobj in smoothie_list%}
+               <form action="/orderitem" method="POST">
+              {% csrf_token %}
+              <h2 class='cat_heading'>{{sobj.item_name}}</h2>
+              <div class='cat_detail'>
+                <div class='r_left'>
+                  <p>{{sobj.ingrediants}}</p>
+                </div>
+                <div class='r_right'>
+                  <div class='actioner'>
+                    <p class='price'><span class='item_price'>{{sobj.price}}</span></p>
+                    <!-- <div id='cls_extra_add_on_1' class='cls_extra_add_on'><span>Choice of:</span>
+                                          <select id='extra_option1'>
+                                            <option value=''>Carrot</option>
+                                            <option value=''>Chocolate</option>
+                                          </select>
+                                        </div> -->
+                    <p class='add_to_cart'>Qty:
+                      <input type='text' value='1' size='10' name="quantity"/>
+                      <input type="hidden" value="{{sobj.item_id}}" name="itemid"/>
+                      <input type="hidden" value="{{sobj.sub_cat_id}}" name="subcatid"/>
+                      <input type="hidden" value="{{sobj.cat_id}}" name="cat_id"/>
+                      <input type='submit' value='+ ADD' />
+                    </p>
+                  </div>
+                </div>
+              </div>
+              </form>
+              {%endfor%}
+              
+              <!--2-------->
+              <a class='selectec_category_heading' name='MILK&SHAKES'>MILK SHAKES</a>
+              {% for msobj in milkshake_list%}
+              <form action="/orderitem" method="POST">
+              {% csrf_token %}
+              <h2 class='cat_heading'>{{msobj.item_name}}</h2>
+              <div class='cat_detail'>
+                <div class='r_left'>
+                  <p>{{msobj.ingrediants}}</p>
+                </div>
+                <div class='r_right'>
+                  <div class='actioner'>
+                    <p class='price'><span class='item_price'>{{msobj.price}}</span></p>
+                    <!-- <div id='cls_extra_add_on_1' class='cls_extra_add_on'><span>Choice of:</span>
+                                          <select id='extra_option1'>
+                                            <option value=''>Carrot</option>
+                                            <option value=''>Chocolate</option>
+                                          </select>
+                                        </div> -->
+                    <p class='add_to_cart'>Qty:
+                      <input type='text' value='1' size='10' name="quantity"/>
+                      <input type="hidden" value="{{msobj.item_id}}" name="itemid"/>
+                      <input type="hidden" value="{{msobj.sub_cat_id}}" name="subcatid"/>
+                      <input type="hidden" value="{{msobj.cat_id}}" name="cat_id"/>
+                      <input type='submit' value='+ ADD' />
+                    </p>
+                  </div>
+                </div>
+              </div>
+              </form>
+              {%endfor%}
+              
+              <!--3-------->
+              <a class='selectec_category_heading' name='SPARKLERS'>SPARKLERS</a>
+              {% for spobj in sparklers_list%}
+              <form action="/orderitem" method="POST">
+              {% csrf_token %}
+              <h2 class='cat_heading'>{{spobj.item_name}}</h2>
+              <div class='cat_detail'>
+                <div class='r_left'>
+                  <p>{{spobj.ingrediants}}</p>
+                </div>
+                <div class='r_right'>
+                  <div class='actioner'>
+                    <p class='price'><span class='item_price'>{{spobj.price}}</span></p>
+                    <!-- <div id='cls_extra_add_on_1' class='cls_extra_add_on'><span>Choice of:</span>
+                                          <select id='extra_option1'>
+                                            <option value=''>Carrot</option>
+                                            <option value=''>Chocolate</option>
+                                          </select>
+                                        </div> -->
+                    <p class='add_to_cart'>Qty:
+                      <input type='text' value='1' size='10' name="quantity"/>
+                      <input type="hidden" value="{{spobj.item_id}}" name="itemid"/>
+                      <input type="hidden" value="{{spobj.sub_cat_id}}" name="subcatid"/>
+                      <input type="hidden" value="{{spobj.cat_id}}" name="cat_id"/>
+                      <input type='submit' value='+ ADD' />
+                    </p>
+                  </div>
+                </div>
+              </div>
+              </form>
+              {%endfor%}
+              <!--4-------->
+              <a class='selectec_category_heading' name='FRESH&JUICES'>FRESH JUICES</a>
+              {% for jobj in juicelist%}
+              <form action="/orderitem" method="POST">
+              {% csrf_token %}
+              <h2 class='cat_heading'>{{jobj.item_name}}</h2>
+              <div class='cat_detail'>
+                <div class='r_left'>
+                  <p>{{jobj.ingrediants}}</p>
+                </div>
+                <div class='r_right'>
+                  <div class='actioner'>
+                    <p class='price'><span class='item_price'>{{jobj.price}}</span></p>
+                    <p class='add_to_cart'>Qty:
+                      <input type='text' value='1' size='10' name="quantity"/>
+                      <input type="hidden" value="{{jobj.item_id}}" name="itemid"/>
+                      <input type="hidden" value="{{jobj.sub_cat_id}}" name="subcatid"/>
+                      <input type="hidden" value="{{jobj.cat_id}}" name="cat_id"/>
+                      <input type='submit' value='+ ADD' />
+                    </p>
+                  </div>
+                </div>
+              </div>
+              </form>
+          {%endfor%}
+
+
+              <!--5-------->
+              <a class='selectec_category_heading' name='BOTTLED&JUICES'>BOTTLED JUICES</a>
+              {% for botobj in bottle_list%}
+              <form action="/orderitem" method="POST">
+              {% csrf_token %}
+              <h2 class='cat_heading'>{{botobj.item_name}}</h2>
+              <div class='cat_detail'>
+                <div class='r_left'>
+                  <p>{{botobj.ingrediants}}</p>
+                </div>
+                <div class='r_right'>
+                  <div class='actioner'>
+                    <p class='price'><span class='item_price'>{{botobj.price}}</span></p>
+                    <!-- <div id='cls_extra_add_on_1' class='cls_extra_add_on'><span>Choice of:</span>
+                      <select id='extra_option1'>
+                        <option value=''>Carrot</option>
+                        <option value=''>Chocolate</option>
+                      </select>
+                    </div> -->
+                    <p class='add_to_cart'>Qty:
+                      <input type='text' value='1' size='10' name="quantity"/>
+                      <input type="hidden" value="{{botobj.item_id}}" name="itemid"/>
+                      <input type="hidden" value="{{botobj.sub_cat_id}}" name="subcatid"/>
+                      <input type="hidden" value="{{botobj.cat_id}}" name="cat_id"/>
+                      <input type='submit' value='+ ADD' />
+                    </p>
+                  </div>
+                </div>
+              </div>
+              </form>
+              {%endfor%}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="order_summery" id="o_s" style="background: url('/static/images/bg-cart.jpg');">
+        <div id="mini_cart_container">      
+          <div id="ContentPlaceHolder1_mini_cart" class="mini_cart">
+          
+            <h1 class="restaurant_title">Order Summery</h1>
+             {% for item in orderitems %}
+            <div class="selection_detail">
+           
+              <p class="selection_title" style="text-transform: capitalize;">{{item.name}}</p>
+              
+              <span class="selection_price" style="display: none;">12</span><span class="selection_total_price" id="{{item.item_id}}">{{item.price}}</span>
+             
+              <div class="selection_action mc"><span style="position: relative;bottom: 8px;right: 53px;">Qty:</span>
+                <input class="clsHndRestId" type="hidden" value="185">
+                <input type="hidden" value="{{item.quantity}}">
+                <input type="text" size="10" readonly value="{{item.quantity}}" style="position: relative;bottom: 8px;right: 56px;" id="id_quantity{{item.item_id}}">
+                <!-- <input type="button" style="background-image:url(/static/images/Bin-16.png);width: 20px;
+  height: 21px;"> -->
+                <form action="/deleteorder" method="POST">
+                  {% csrf_token %}
+                <input type="hidden" value="{{item.item_id}}" name="itemid">
+                <input type="hidden" value="{{item.order_id}}" name="orderid">
+                <input type="submit" style="position: relative;width: 12px;height: 20px;font-size: 11px;border: medium none;background: #333 none repeat scroll 0% 0%;color: #FFF;bottom: 29px;cursor: pointer;left: 9px" value="x">
+                </form>
+                <input class="btn_delete_from_cart" type="button" value="-" style="position:relative;bottom:49px; right:33px;width: 12px;" onclick="decrease({{item.item_id}},{{item.price}}, {{item.order_id}})">
+                <input type="button" class="btn_add_to_cart" value="+" style="position: relative;bottom:49px;right:33px;width: 12px;" onclick="increase({{item.item_id}},{{item.price}},{{item.order_id}})">
+                <input type="hidden" value="{{userid}}" name="userid">
+              </div>
+               
+            </div>
+            {% endfor %}
+            <div class="grand_total_price">Total: <div id="id_total">{{total}}</div> AED<input type="hidden" value="{{total}}" id="id_total"></div>
+            <div class="cart_error_message" id="id_error">
+              Delivery Charges 5 AED
+            </div>
+
+           
+            
+          </div>
+          
+          <div id="mini_cart_actioner">
+          
+            <!-- <input type="submit" name="MoreRestaurants" value="+ Order from more restaurants" id="order_restaurants" style="background:#353535;color:#FFF;">--> 
+            <input type="submit" name="Clear" value="Clear" id="clear"  onclick="Clear()">
+            <input type="submit" name="checkout" value="Checkout" id="checkout" style="background-color:#353535;color:#FFF;border-radius:6px;width:100px;position: relative; left: 68px;height: 25px;" onclick="Checkout()">
+          </div>
+        </div>
+      </section>
+        
+     
+     
+    </div>
+    <script type="text/javascript" scr="/static/js/jquery.min.js"></script>
+    <script type="text/javascript">
+    function decrease(itemid, price, orderid)
+    {
+     var q = $("#id_quantity"+itemid).val();
+     if (q <= 1)
+     {
+      q = 1;
+      var  p = Number(price)*Number(q);
+      document.getElementById("id_quantity"+itemid).value=q;
+      document.getElementById(itemid).innerHTML=String(p);
+     }
+     else
+     {
+      q = Number(q) - Number(1);
+      var  p = Number(price)*Number(q);
+      document.getElementById("id_quantity"+itemid).value=q;
+      document.getElementById(itemid).innerHTML=String(p);
+    }
+
+    $.ajax({url: "/changeitem?itemid="+itemid+"&price="+p+"&quantity="+q+"&orderid="+orderid, success: function(result){
+            $("#id_total").html(result);
+        }});
+
+    }
+
+    function increase(itemid, price, orderid)
+    {
+      var q = $("#id_quantity"+itemid).val();
+      // alert(quantity)
+      q = Number(q) + Number(1);
+      var  p = Number(price)*Number(q);
+      document.getElementById(itemid).innerHTML=String(p);
+      document.getElementById("id_quantity"+itemid).value=q;
+
+      $.ajax({url: "/changeitem?itemid="+itemid+"&price="+p+"&quantity="+q+"&orderid="+orderid, success: function(result){
+            $("#id_total").html(result);
+        }});
+
+    }
+   function Checkout()
+    {
+      window.location.href = "/checkout";
+    }
+
+    function Clear()
+    {
+      window.location.href = '/clear'
+    }
+    </script>
+   <script type="text/javascript">
+        $( document ).ready(function(){
+          var  total = $("#id_total").val();
+          if (Number(total)>=20)
+          {
+            $('#checkout').show();
+      document.getElementById("id_error").style.visibility="hidden";
+          }
+          else
+          {
+            // $('#checkout').hide();
+          }
+        });
+    </script> 
+
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+          $("ul.submenu").hide(); /*hides the submenus*/
+          $("a.trigger").click(function() {
+              $(this).next("ul.submenu").slideUp(400);
+              if (!$(this).next().is(":visible")) {
+                  $(this).next().slideDown();
+              }
+          });
+      });
+
+
+      /* scrolltop position of fixed div */
+        $(window).scroll(function(){
+            if ($(this).scrollTop() > 400) {
+                $('#categories_container').addClass('fixed');
+                
+            } else {
+                $('#categories_container').removeClass('fixed');
+               
+            }
+
+            if ($(this).scrollTop() > 500) {
+                $('#o_s').addClass('o_s_fixed');
+            } else {
+                $('#o_s').removeClass('o_s_fixed');
+            }
+        });
+      /* end of fixed code */
+    </script>
+   
+    {% endblock%}

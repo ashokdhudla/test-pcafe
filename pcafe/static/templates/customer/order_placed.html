@@ -1,0 +1,70 @@
+{% extends "base2.html"%}
+{% block content%}
+   
+    <div id="content_home">
+       
+     
+    
+      <div id="right_details" style="border:none;">
+      <p class="order_place">Thank you for your order, we shall get back to you soon</p>
+      
+      <!-- <p class="order_place_bottom">Your order has been placed. if you need help with an order or would like more information, please note the information below.</p> -->
+      
+      <h2 class="order_number">Your order number:<span style="color:#f81d1d;">{{orderid}}</span></h2>
+      <!-- <h2 class="order_ph_number">Phone number for assistance:<span style="color:#f81d1d;">+971 4 558 7161</span></h2> -->
+      
+    <!--   <img src="images/alert-circle-.png" style="float:left; padding-right:20px;"> -->
+      <!-- <p class="img_right_alert">Your order will be confirmed within 10minutes.if you do not recive a call from us with in 10 minutes,there could be a problem beyound our control,so please give us a call so as to proced with your order promptly. </p> -->
+      
+      <h2 class="order_profile">ORDER SUMMARY</h2>
+      <!-- <p class="from_check">FROM: Pantry Cafe (Casual Dining & International)</p> -->
+      
+      <!-- <p class="item">Item #</p> -->
+      <p class="Product">Product</p>
+      <p class="Price">Price (AED)</p>
+      <p class="Quantity">Quantity</p>
+      <p class="Total">Total (AED)</p>
+      <div style="clear:both;"></div>
+      
+      {% for itemobj in items %}
+       <!-- <p class="item1">1</p> -->
+      <p class="Product2">{{itemobj.name}}</p>
+      <p class="Price3">{{itemobj.price}}</p>
+      <p class="Quantity4">{{itemobj.quantity}}</p>
+      <p class="Total5">{{itemobj.price}}</p>
+      <div style="clear:both;"></div>
+     {%endfor%}
+      <p class="Product21">Food Total</p>
+      <p class="Price32"></p>
+      <!-- <p class="Quantity42"></p> -->
+      <p class="Total52">{{total}}</p>
+      <div style="clear:both;"></div>
+      
+      
+     
+      <p class="Product21">Delivery Charge</p>
+      <p class="Price32"></p>
+      <!-- <p class="Quantity42"></p> -->
+      <p class="Total52">5</p>
+      <div style="clear:both;"></div> 
+      
+      
+       <p class="Product21">Total</p>
+      <p class="Price321"></p>
+      <!-- <p class="Quantity421"></p> -->
+      <p class="Total521">{{grandtotal}}</p>
+      <div style="clear:both;"></div> 
+      
+      
+     <!--  <p class="last_rigister" style="margin-right: 129px;">YOUR TOTAL FOR THIS ORDER: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    {{grandtotal}} AED</p> -->
+      <div style="clear:both;"></div> 
+      </div>
+      
+      
+      
+     
+     
+    </div>
+    
+    
+    {% endblock %}

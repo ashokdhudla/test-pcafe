@@ -1,0 +1,30 @@
+{% extends "base2.html" %}
+{% block content %}
+<div class="register_headings">
+     
+     <div class="table">
+     
+     <div class="row1">Order ID</div>
+     <div class="row2">Date</div>
+     <div class="row3">Region</div>
+     <div class="row4">Order Detail</div>
+     <div class="row5">Re Order</div>
+     <div style="clear:both;"></div>
+     
+     </div>
+     
+     <div class="table2">
+     {% for order in order_list %}
+     <div class="row12">{{order.order_id}}</div>
+     <div class="row22">{{order.order_date}}</div>
+     <div class="row32">Jumeirah</div>
+     <div class="row42"><a href="#" onClick="window.open('order_details?or_id={{order.order_id}}','mywindow','width=600,height=400')" class="order_red">Order Detail</a></div>
+     <div class="row52"><a href="/checkout?or_id={{order.order_id}}"  class="order_red">Re Order</a></div>
+     <div style="clear:both;"></div>
+     <hr>
+     {% endfor %}
+     </div>
+     
+     
+     </div>
+{% endblock %}

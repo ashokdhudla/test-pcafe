@@ -1,0 +1,197 @@
+{% extends "base2.html"%}  
+    
+    {% block content %}
+    <div id="content_home">
+       <div class="add_address">
+        <h1 class="register_heading">Address</h1>
+        {% for add in addressobj %}
+        <p>{{add.address}}-{{add.city}}</p>
+        {% endfor %}
+         <button onclick="add_address()">Add Address</button> 
+       <!-- <a href="/address" class="add"></a> -->
+       
+       
+       </div>
+    <div class="register_headings">
+      <h2 class="register_heading">Your Profile</h2>
+<!-- <p class="para_register">From here you may edit your account's profile information.</p> -->
+
+<h2 class="register_heading">{{edit_success}}</h2>
+<h2 class="register_heading">{{invalid_oldpwd}}</h2>
+
+     </div>     
+     <div class="left_labels">
+     <label class="label_left">First Name:</label>
+     
+     </br>
+     
+     <label class="label_left">Last Name:</label>
+      </br>
+      
+      <label class="label_left">Old Password:</label>
+      </br> 
+      
+     <label class="label_left">New Password:</label>
+      </br>
+      
+     <label class="label_left">Confirm Password:</label>
+      </br>
+          <label class="label_left">Company / Organization:</label>
+      </br>
+      
+      
+     <label class="label_left">Email:</label>
+      </br>
+     <label class="label_left">Data of Birth:</label>
+      </br>
+     <!-- <label class="label_left">PO Box:</label>
+      </br> -->
+    
+    
+     <label class="label_left">Phone:</label>
+      </br>
+     <label class="label_left">Mobile:</label>
+    
+     </div>
+     
+      <div class="right_inputs">
+        <form action="/myprofile" method="POST">
+          {% csrf_token %}
+        <input type="hidden" value="{{user_details.userid}}" name="userid">
+      <input type="text" id="fname" class="input_register" name="firstname" placeholder="Enter your name" required data-fv-notempty-message="The name is required" pattern="[a-zA-Z]+[a-zA-Z]+"  value="{{user_details.first_name}}" readonly></input>
+      </br>
+       <input type="text" id="lname" class="input_register" name="lastname"  placeholder="Enter your name" required data-fv-notempty-message="The name is required" pattern="[a-zA-Z]+[a-zA-Z]+" value="{{user_details.last_name}}" readonly/>
+       </br>
+        <input type="password" id="opwd" class="input_register" name="oldpwd" placeholder="Old Password" id="password1" required class="input_register" readonly> 
+       </br>
+       <input type="password" id="npwd" class="input_register" placeholder="New Password" id="password" required class="input_register" name="password" readonly>
+       </br>
+       <input type="password" id="cpwd" class="input_register" placeholder="Confirm Password" id="confirm_password" required class="input_register" readonly>
+       </br>
+       <input type="text" id="cmp" class="input_register" name="company" required readonly>
+       </br>
+       <input required type="email" id='email' name="email" id="email" class="input_register" value="{{user_details.email}}" readonly>
+       </br>
+      
+      <!-- <input type="text" class="input_register" name="date" id="date" data-select="datepicker" style="width:277px" value="{{user_details.dob}}">
+						<span class="input-group-btn"><button type="button" class="btn btn-primary" data-toggle="datepicker"><i class="fa fa-calendar"></i></button></span> -->
+
+      <select name="month"  style="margin: 10px 0px 20px 0px;">
+          <option value="0">Month:</option>
+          <option value="1">January</option>
+          <option value="2">February</option>
+          <option value="3">March</option>
+          <option value="4">April</option>
+          <option value="5">May</option>
+          <option value="6">June</option>
+          <option value="7">July</option>
+          <option value="8">August</option>
+          <option value="9">September</option>
+          <option value="10">October</option>
+          <option value="11">November</option>
+          <option value="12">December</option>
+       </select>
+
+       <select name="day">
+        <option value="0">Day:</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+        <option value="22">22</option>
+        <option value="23">23</option>
+        <option value="24">24</option>
+        <option value="25">25</option>
+        <option value="26">26</option>
+        <option value="27">27</option>
+        <option value="28">28</option>
+        <option value="29">29</option>
+        <option value="30">30</option>
+        <option value="31">31</option>
+
+       </select>
+      
+    </br>
+      <!-- <input type="text" class="input_register" name="post"  placeholder="" required data-fv-notempty-message="post box required" value="{{addressobj.po_box}}" />
+      </br> -->
+      <input type="tel"  id="phone" class="input_register" name="phone" required  class="input_register" pattern="[0-9]+" value="{{user_details.phone_no}}" readonly></input>
+      </br>
+       <input type="tel"  id="mobile" class="input_register" required name="mobile" class="input_register" pattern="[0-9]+" value="{{user_details.mobile}}" readonly></input>
+      </br>
+     
+      <button  type="submit" id="button_register" required class="register_button" name="submit" value="Submit Registration" class="submit_desk" style="background-color:#353535">Save Profile</button>
+
+      <button  type="button" id="edit_profile" onclick="edit_profile()">Edit Profile</button>
+      
+      </div>
+     </form>
+    
+  <script>
+
+var password = document.getElementById("password")
+  , confirm_password = document.getElementById("confirm_password");
+
+function validatePassword(){
+  if(password.value != confirm_password.value) {
+    confirm_password.setCustomValidity("Passwords Don't Match");
+  } else {
+    confirm_password.setCustomValidity('');
+  }
+}
+
+password.onchange = validatePassword;
+confirm_password.onkeyup = validatePassword;
+
+
+</script>
+<script>
+$(document).ready(function () {
+    $("#button_register").hide();
+    $("#edit_profile").click(function () {
+        $("#button_register").show();
+        $("#edit_profile").hide();
+        $("#fname").attr('readonly',false)
+        $("#lname").attr('readonly',false)
+        $("#opwd").attr('readonly',false)
+        $("#npwd").attr('readonly',false)
+        $("#cpwd").attr('readonly',false)
+        $("#phone").attr('readonly',false)
+        $("#mobile").attr('readonly',false)
+        $("#email").attr('readonly',false)
+        $("#cmp").attr('readonly',false)
+    });
+    $("#button_register").click(function () {
+        $("#edit_profile").hide();
+    });
+});
+</script>
+
+ <script>
+  function add_address()
+  {
+    window.location.href = '/address';
+  }
+ </script>
+     
+     
+    </div>
+    
+    
+   {% endblock %}

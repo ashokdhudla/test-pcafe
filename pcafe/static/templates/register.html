@@ -1,0 +1,227 @@
+{% extends "base.html" %}
+
+{% block head %}
+<script src='https://www.google.com/recaptcha/api.js'></script>
+   
+
+ <div id="header_main_inner" style="margin-top: 4px;">
+          <img src="/static/images/Pantry-Logo.png" alt="logo" class="logo_top"/>
+          
+          
+        <img src="/static/images/chef.png" id="chef" width="136" height="150" alt="RSD Chef" />
+        
+    
+        
+        
+        <nav id="nav_mainpage">
+          <ul>
+            <li><a href="/">home</a></li>
+            <li><a href="/register" id="hlRegister">register</a></li>
+            <li><a href="#" id="hlHowToOrder">how to order</a></li>
+            <li><a href="#" id="hlTellaFriend">tell a friend</a></li>
+            <li><a href="#"> Order Now</a></li>
+           ``
+            <li><a href="#" id="hlGuestbook">guestbook</a></li>
+           
+          <li><a href="#" id="hlContact">contact us</a></li>
+          </ul>
+          
+        </nav>
+        
+      </div>
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="register_headings">
+      <h2 class="register_heading">NEW CLUB MEMBERS REGISTER!</h2>
+<p class="para_register">If you do not have a Room Service Deliveries account, please take a minute to create one now.</p>
+
+
+
+     </div>
+     
+     <!-- <form  class="register_form"> -->
+     <h2 class="register_heading">{{success}}{{success_msg}}{{errormsg}}</h2>
+     <div class="left_labels">
+     <label class="label_left">First Name:</label>
+     
+     </br>
+     
+     <label class="label_left">Last Name:</label>
+      </br>
+     <label class="label_left">Password:</label>
+      </br>
+     <label class="label_left">Confirm Password:</label>
+      </br>
+     <label class="label_left">Email:</label>
+      </br>
+     <label class="label_left">Data of Birth:</label>
+      </br>
+     <label class="label_left">Address1:</label>
+      </br>
+      <label class="label_left">Address2:</label>
+      </br>
+     <label class="label_left">Area:</label>
+      </br>
+     <label class="label_left">City:</label>
+      </br>
+     <!-- <label class="label_left">PO Box:</label>
+      </br> -->
+     <label class="label_left">Phone:</label>
+      </br>
+     <label class="label_left">Mobile:</label>
+      </br>
+     <label class="label_left">How did you hear about us?</label>
+      </br>
+     <label class="label_left">Please Confirm that you are not a robot:</label>
+      </br>
+     </div>
+     
+      <div class="right_inputs">
+        <form action="/register" method="POST">
+          {% csrf_token %}
+      <input type="text" class="input_register" name="first_name" placeholder="First name" required data-fv-notempty-message="The name is required" pattern="[a-zA-Z]+[a-zA-Z]+" ></input>
+      </br>
+       <input type="text" class="input_register" name="last_name"  placeholder="Last name" required data-fv-notempty-message="The name is required" pattern="[a-zA-Z]+[a-zA-Z]+" />
+       </br>
+       <input type="password" class="input_register" placeholder="Password" id="password" required class="input_register" name="password">
+       </br>
+       <input type="password" class="input_register" placeholder="Confirm Password" id="confirm_password" required class="input_register">
+       </br>
+       <input required type="email" id='p1' name="email" id="email" class="input_register" placeholder="Email id">
+       </br>
+
+      <select name="month"  style="margin: 10px 0px 20px 0px;">
+          <option value="0">Month:</option>
+          <option value="1">January</option>
+          <option value="2">February</option>
+          <option value="3">March</option>
+          <option value="4">April</option>
+          <option value="5">May</option>
+          <option value="6">June</option>
+          <option value="7">July</option>
+          <option value="8">August</option>
+          <option value="9">September</option>
+          <option value="10">October</option>
+          <option value="11">November</option>
+          <option value="12">December</option>
+       </select>
+
+       <select name="day">
+        <option value="0">Day:</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+        <option value="22">22</option>
+        <option value="23">23</option>
+        <option value="24">24</option>
+        <option value="25">25</option>
+        <option value="26">26</option>
+        <option value="27">27</option>
+        <option value="28">28</option>
+        <option value="29">29</option>
+        <option value="30">30</option>
+        <option value="31">31</option>
+
+       </select>
+
+       
+
+		</br>  
+      <input type="text" class="input_register" name="Address"  placeholder="Address" required data-fv-notempty-message="The address is required"  />
+      </br>
+
+      <input type="text" class="input_register" name="Address2"  placeholder="Address 2" required data-fv-notempty-message="The address is required"  />
+      </br>
+      <select name="Area" class="input_register" style="height:30px" required >
+		<option value="13">Jumeirah 1</option>
+		<option value="20">Jumeirah 2</option>
+		<option value="83">Jumeirah 3</option>
+		<option value="125">Business Bay</option>
+	</select> 
+         
+         </br>
+      
+       <input type="area" class="input_register" name="city"  placeholder="" required data-fv-notempty-message="area is  required"  value="Dubai"/>
+      
+      </br>
+      
+     <!--  <input type="text" class="input_register" name="post"  placeholder="" required data-fv-notempty-message="post box required"  />
+      </br> -->
+      <input type="tel" class="input_register" required  class="input_register" pattern="[0-9]+" name="phone" maxlength="12"></input>
+      </br>
+       <input type="tel" class="input_register" required  class="input_register" pattern="[0-9]+" name="mobile"></input>
+      </br>
+      <select name="Hear" class="input_register" style="height:30px">
+		<option value="0">Please Select</option>
+		<!-- <option value="RSD directory distribution">RSD directory distribution</option>
+		<option value="Directly from restaurant">Directly from restaurant</option> -->
+		<option value="Email">Email</option>
+		<option value="Friend / Word of mouth">Friend / Word of mouth</option>
+		<!-- <option value="Search Engines">Search Engines</option>
+		<option value="Google AdWords">Google AdWords</option> -->
+		<option value="Facebook">Facebook</option>
+		<option value="Twitter">Twitter</option>
+		<option value="Media (Newspaper, Radio, TV..)">Media (Newspaper, Radio, TV..)</option>
+		<option value="Other">Other</option>
+
+	</select>
+    </br>
+        <div class="g-recaptcha" data-sitekey="6LfshQkTAAAAAJf0HheHxZlZQImCb2-bNtQ2-ezU"></div>
+      </br>
+      <button  type="submit" id="button_register" required class="register_button" name="submit" value="Submit Registration" class="submit_desk" style="background-color:#353535">Create Account</button>
+      
+      </div>
+     </form>
+  <script src="/static/js/datepicker_jquery.js"></script>  
+  <script src="/static/js/datepicker.js"></script>
+  <script>
+
+var password = document.getElementById("password")
+  , confirm_password = document.getElementById("confirm_password");
+
+function validatePassword(){
+  if(password.value != confirm_password.value) {
+    confirm_password.setCustomValidity("Passwords Don't Match");
+  } else {
+    confirm_password.setCustomValidity('');
+  }
+}
+
+password.onchange = validatePassword;
+confirm_password.onkeyup = validatePassword;
+
+
+</script>
+
+<script type="text/javascript">
+      var onloadCallback = function() {
+        grecaptcha.render('html_element', {
+          'sitekey' : '6LcIhQkTAAAAAI1ilioeI6KsLFkXLifu0HUegr-8'
+        });
+      };
+    </script>
+
+
+{% endblock %}

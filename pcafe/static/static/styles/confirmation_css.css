@@ -1,0 +1,414 @@
+*{
+	margin:0px;
+	padding:0px;
+	
+	}
+
+#left_details{
+	 width: 215px;
+     height: auto;
+     float: left;
+	 margin-right:20px;
+	 margin-bottom:20px;
+	 
+	}
+#right_details{
+    width: 610px;
+    height: auto;
+	float:left;
+	margin-bottom:20px;
+	  border-left: 1px solid #333333;
+	   padding-left:10px;
+		}
+.account{
+	font-family: arial;
+  font-size: 18px;
+  color: #333333;
+  padding-top: 20px;
+  padding-bottom: 7px;
+  border-bottom:1px solid #999999;
+	}	
+	
+.username{
+	font-family: arial;
+  font-size: 12px;
+  color: #333333;
+  padding-top: 10px;
+	  padding-bottom: 10px;
+	}	
+	
+.tel{
+	
+	}	
+	
+.email{
+	padding-top:20px;
+	padding-bottom:20px;
+	padding-top: 15px;
+  padding-bottom: 20px;
+  font-family: arial;
+  font-weight: normal;
+	}	
+	
+.order_profile{
+	  font-family: arial;
+  font-size: 18px;
+  padding-top: 20px;
+  color: #333333;
+  padding-bottom: 20px;
+ 
+	}	
+	
+.from_check{
+	  font-family: arial;
+  font-size: 12px;
+  color: #fff;
+  background:#C00;
+    padding: 10px;
+	width: 507px;
+	}	
+	
+.item{
+	float:left;
+	width:90px;
+	background:#b5a697;
+	margin-left:1px;
+	margin-top: 2px;
+  font-family: arial;
+  font-size: 14px;
+  color: #fff;
+  padding: 8px;
+  padding-left: 24px;
+    
+	}	
+.Product{
+	float:left;
+	width:234px;
+	background:#b5a697;
+	margin-left:1px;
+	margin-top: 2px;
+  font-family: arial;
+  font-size: 14px;
+  color: #fff;
+    
+  padding: 8px;
+  padding-left: 48px;
+	}	
+.Price{
+	float:left;
+	width:90px;
+	background:#b5a697;
+	margin-left:1px;
+	margin-top: 2px;
+  font-family: arial;
+  font-size: 14px;
+  color: #fff;
+    padding: 8px;
+	}	
+.Quantity{
+	float:left;
+	width:90px;
+	background:#b5a697;
+	margin-left:1px;
+	margin-top: 2px;
+  font-family: arial;
+  font-size: 14px;
+  color: #fff;
+    padding: 8px;
+  padding-left: 19px;
+	}	
+.Total{
+	float:left;
+	width:90px;
+	background:#b5a697;
+	margin-left:1px;
+	margin-top: 2px;
+  font-family: arial;
+  font-size: 14px;
+  color: #fff;
+    padding: 8px;
+	
+	}				
+	
+	
+.item1{
+	float:left;
+	width:90px;
+	background:#dad5ca;
+	margin-left:1px;
+	margin-top: 2px;
+  font-family: arial;
+  font-size: 14px;
+   color: #000;
+  padding: 5px;
+  padding-left: 24px;
+  font-weight:bold;
+    
+	}	
+.Product2{
+	float:left;
+	width:234px;
+	background:#dad5ca;
+	margin-left:1px;
+	margin-top: 2px;
+  font-family: arial;
+  font-size: 14px;
+ color: #000;
+  padding: 5px;
+  padding-left: 48px;
+  font-weight:bold;
+	}	
+.Product21{
+	float:left;
+	width:325px;
+	background:#dad5ca;
+	margin-left:1px;
+	margin-top: 2px;
+  font-family: arial;
+  font-size: 14px;
+ color: #d31b23;
+  padding: 5px;
+ 
+  font-weight:bold;
+	}		
+.Price3{
+	float:left;
+	width:90px;
+	background:#dad5ca;
+	margin-left:1px;
+	margin-top: 2px;
+  font-family: arial;
+  font-size: 14px;
+  color: #000;
+    padding: 5px;
+	font-weight:bold;
+	}	
+.Price32{
+	float:left;
+	width:90px;
+	background:#dad5ca;
+	margin-left:1px;
+	margin-top: 2px;
+  font-family: arial;
+  font-size: 14px;
+  color: #000;
+      padding: 13px;
+	font-weight:bold;
+	}	
+.Price321{
+	float:left;
+	width:90px;
+	background:#dad5ca;
+	margin-left:1px;
+	margin-top: 2px;
+  font-family: arial;
+  font-size: 14px;
+  color: #000;
+      padding: 21px;
+	font-weight:bold;
+	}		
+.Quantity4{
+	float:left;
+	width:90px;
+	background:#dad5ca;
+	margin-left:1px;
+	margin-top: 2px;
+  font-family: arial;
+  font-size: 14px;
+   color: #000;
+    padding: 5px;
+  padding-left: 19px;
+  font-weight:bold;
+	}
+.Quantity42{
+	float:left;
+	width:90px;
+	background:#dad5ca;
+	margin-left:1px;
+	margin-top: 2px;
+  font-family: arial;
+  font-size: 14px;
+   color: #000;
+    padding: 13px;
+  padding-left: 19px;
+  font-weight:bold;
+	}	
+.Quantity421{
+	float:left;
+	width:90px;
+	background:#dad5ca;
+	margin-left:1px;
+	margin-top: 2px;
+  font-family: arial;
+  font-size: 14px;
+   color: #000;
+    padding: 21px;
+  padding-left: 19px;
+  font-weight:bold;
+	}			
+.Total5{
+	float:left;
+	width:90px;
+	background:#dad5ca;
+	margin-left:1px;
+	margin-top: 2px;
+  font-family: arial;
+  font-size: 14px;
+  color: #000;
+    padding: 5px;
+	font-weight:bold;
+	}				
+.Total52{
+	float:left;
+	width:90px;
+	background:#dad5ca;
+	margin-left:1px;
+	margin-top: 2px;
+  font-family: arial;
+  font-size: 14px;
+  color: #000;
+    padding: 5px;
+	font-weight:bold;
+	}		
+.Total521{
+	float:left;
+	width:90px;
+	background:#dad5ca;
+	margin-left:1px;
+	margin-top: 2px;
+  font-family: arial;
+  font-size: 14px;
+  color: #000;
+    padding: 13px;
+	font-weight:bold;
+	}		
+		
+.last_rigister{
+	float: right;
+  padding-top: 15px;
+  font-weight: bold;
+  color: #333333;
+	
+	}	
+.last_rigister2{
+	float: right;
+  padding-top: 15px;
+  font-weight: bold;
+  color: #333333;
+	
+	}		
+	
+.payment{
+		font-size: 13px;
+		margin-bottom: 5px;
+	
+	}	
+	
+#option{
+	margin-bottom:25px;
+	}	
+	
+.border{
+		border-bottom: 1px solid #ddd;
+		height: 50px;
+		width: 100%;
+		margin-top: 25px;
+	}	
+
+.delivery{
+	 font-size: 13px;
+  
+  
+	}	
+	
+.location{
+	 font-size: 13px;
+  margin-bottom: 5px;
+  margin-top:5px;
+  
+	}	
+
+
+.select_cata{
+	list-style:none;
+	background:#b5a697;
+	
+	}	
+	
+.select_cata li{
+	font-family:Arial, Helvetica, sans-serif;
+	float:left;
+	font-size:14px;
+	color:#FFF;
+	font-weight:bold;
+	}		
+		
+	
+.select_cata li:nth-child(1) {
+	  width: 195px;
+	  padding:5px;
+}		
+.select_cata li:nth-child(2) {
+   width: 195px;
+   padding:5px;
+}	
+.select_cata li:nth-child(3) {
+   width: 195px;
+   padding:5px;
+}	
+
+.list_select{
+	width:599px;
+	height:auto;
+	background:#dad5ca;
+	height:40px;
+	
+	}	
+.address_list{
+	  margin-left: 103px;
+	}	
+.address_list2{
+	
+	margin-left:140px;
+	}	
+#AddAddress{
+	  padding: 6px;
+  background-color: #333333;
+  color: #fff;
+  margin-top: 20px;
+	}
+#ReturnToMenu{
+	  padding: 6px;
+  background-color: #333333;
+  color: #fff;
+  margin-top: 20px;
+	
+	}	
+#SUBMITORDER{
+	  padding: 6px;
+  background-color: #333333;
+  color: #fff;
+  margin-top: 20px;
+  float:right;
+	
+	}			
+	
+.Special{
+	  font-size: 13px;
+  font-weight: normal;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

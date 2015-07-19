@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+ <p style="position: relative;left: 8px;font-weight: bold;font-size: 14px;font-family: 'lanea-Regular','arial' !important;">{{success_msg}}</p>
+ <div class="left_labels">
+     <label class="label_left" style="position:relative;left: 10px;;top:-5px;">Email Id:</label>
+     
+     </br>
+</div>
+
+<div class="right_inputs">
+        <form action="/forgotpwd" method="POST">
+          {% csrf_token %}
+      <input type="text" class="input_register" style="position: relative;right: 168px;bottom: 9px;"name="email" placeholder="Email Id" required data-fv-notempty-message="The Email Id is required" ></input>
+      
+      <button  type="submit" id="button_forgot" required class="register_button" name="submit" value="Retrive Password" class="submit_desk" style="background-color: #353535;color: #FFF;border-radius: 7px;position: relative;right: -1px;width: 137px;height: 36px;">Forgot Password</button>
+      </br>
+</div>
+
+{% endblock %}

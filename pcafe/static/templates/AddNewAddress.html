@@ -1,0 +1,70 @@
+{% extends "base2.html" %}
+{% block content%}
+   
+<div class="add_address">
+       <a href="/address" class="add">My Locations</a>
+       
+       
+       </div>
+    <div class="register_headings">
+      <div>
+      <h2 class="register_heading">My Delivery Locations</h2>
+    <p class="para_register">From here you may add new delivery locations</p>
+     </div>
+       <div class="left_labels">
+     <label class="label_left">Address:</label>
+     
+     </br>
+     </br>
+    </br>
+    </br>
+     
+     <label class="label_left">Phone:</label>
+      </br>
+      
+      <label class="label_left">Select Area:</label>
+      </br> 
+      <label class="label_left">Primary Address?</label>
+      </br> 
+      
+     </div>
+     <form action="/addnew" method="POST">
+     <div class="right_inputs">
+        <form action="/register" method="POST">
+          {% csrf_token %}
+      <input type="text" class="input_register" name="street" placeholder="Street " required data-fv-notempty-message="The name is required"></input>
+      </br>
+      <input type="text" class="input_register" name="address" placeholder="Addess" required data-fv-notempty-message="The name is required"></input>
+      </br>
+      <input type="tel" class="input_register" required  class="input_register" pattern="[0-9]+" name="phone" placeholder="Phone Number"></input>
+      </br>
+        <select name="Area" class="input_register" style="height:30px" required >
+    <option value="13">Jumeirah 1</option>
+    <option value="20">Jumeirah 2</option>
+    <option value="83">Jumeirah 3</option>
+    <option value="125">Business Bay</option>
+
+  </select> 
+      </br>   
+      </br>
+      <input type="checkbox" name="primary" checked="checked" onClick="isTrue()" id="id_primary" value="True">
+    </br>
+     <div style="float:left;margin-left:90px;">
+     <input value="Add New" id="ContentPlaceHolder1_btnAddNew" type="submit" style="background:#353535;color:#fff;width:100px;height:30px;border-radius:6px; margin-left:50px;">
+     </div>
+     </div>
+   </form>
+   <script type="text/javascript">
+    function isTrue()
+    {
+      if(document.getElementById('id_primary').checked) 
+      {
+        document.getElementById('id_primary').value="True"; 
+      }
+      else
+      {
+        document.getElementById('id_primary').value = "False";
+      }
+    }
+   </script>
+{% endblock%}

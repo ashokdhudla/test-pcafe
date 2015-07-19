@@ -1,0 +1,202 @@
+{%extends "base.html"%}   
+{%block content%}
+ <!-- selections starts-->
+   
+    <div id="content_home">
+
+      <div id="left_details">
+        <h2 class="account">ACCOUNT DETAILS</h2>
+
+      </div>
+
+      <div id="right_details" style="width: 735px;">
+        <h2 class="order_profile">ORDER SUMMARY</h2>
+        <table>
+            <col /><col /><col />
+            <tr>
+                <th class="col">Product</th>
+                <th class="col">Price (AED)</th>
+                <th class="col">Quantity</th>
+                <th class="col">Total (AED)</th>
+                <th class="col">Comment</th>
+            </tr>
+            {% for itemobj in items%}
+            <tr>
+                <td>
+                  {{itemobj.name}}
+                </td>
+                <td style="text-align: right;">
+                  <div id="{{itemobj.item_id}}{{itemobj.price}}">{{itemobj.price}}</div>
+                </td>
+                <td>
+                  <input type="text" value="{{itemobj.quantity}}" style="width: 25px;height: 20px;position:relative;bottom: 0px;border-radius: 0px;box-shadow: none;border: 0px;" id="{{itemobj.item_id}}{{itemobj.item_id}}">
+                  <input class="btn_delete_from_cart" value="-" type="button" style="position: relative; right: 22px;" onclick="decrease({{itemobj.item_id}},{{itemobj.actual_price}}, {{itemobj.order_id}})">
+                  <input class="btn_add_to_cart" value="+" type="button" style="position: relative;right: 19px;" onclick="increase({{itemobj.item_id}},{{itemobj.actual_price}}, {{itemobj.order_id}})">
+                  <form action="/deleteorder" method="POST">
+                  {% csrf_token %}
+                  <input type="hidden" value="{{itemobj.order_id}}" name="orderid">
+                  <input type="hidden" value="{{itemobj.item_id}}" name="itemid">
+                  <input type="hidden" value="1" name="checkout">
+                  <input type="submit" value="x" style="position: relative;left: 69px; width: 14px; height: 20px;font-size: 11px;  top: -20px;border:medium none;background: none repeat scroll 0% 0% #333;color: #FFF;bottom: 1px;cursor:pointer;">
+                  </form>
+                </td>
+                <td style="text-align: right;">
+                 <div id="{{itemobj.item_id}}{{itemobj.price}}_1"> {{itemobj.price}} </div>
+                </td>
+                <td style="width: 30%;">
+                  <div id="{{itemobj.item_id}}">
+                    <p id="{{ itemobj.item_id }}_2" onclick="onclick_edit({{itemobj.item_id}})" style="">
+                      <a>Special Request</a>
+                    </p>
+                  </div>
+                  <div id="{{ itemobj.item_id }}_1" style="display: none;">
+                    <input type="text" name="comment" style="width: 97px;padding: 3px;"></input>
+                    <input type="submit" id="Submit_comment" onclick="submit_comment({{ itemobj.item_id }})" value="Update">
+                  </div>
+                </td>
+            </tr>
+            {% endfor %}
+          </table>
+          <table style="margin-top: -3px;width: 509px;">
+            <tr>
+              <td style="width: 405px;"><b>Food Total</b></td>
+              <td style="text-align: right;">
+                <input type="hidden" value="{{total}}" id="total">
+                <b>{{total}}</b>
+              </td>
+            </tr>
+            <tr>
+              <td><b>Delivery Charge</b></td>
+              <td style="text-align: right;">
+                <input type="hidden" value="{{total}}" id="total">
+                <b>5</b>
+              </td>
+            </tr>
+
+            <tr>
+              <td><b>TOTAL</b></td>
+              <td style="text-align: right;">
+                <input type="hidden" value="{{total}}" id="total">
+               <div id="id_total"><b>{{grandtotal}}</b></div>
+              </td>
+            </tr>
+          </table>
+        <!-- <p class="last_rigister" style="margin-right: 125px;">YOUR TOTAL FOR THIS ORDER: &nbsp;&nbsp;&nbsp;    {{grandtotal}} AED</p>
+        <div style="clear:both;"></div> 
+         <p class="last_rigister2" style="margin-right: 125px;">REWARDS: &nbsp;&nbsp;&nbsp    0 AED</p> -->
+        <input type="button" name="ReturnToMenu" value="Return To Menu" id="ReturnToMenu" onclick="menu()" style="margin-top: 50px;border-radius: 6px;">
+
+        <input type="submit" name="SUBMITORDER" value="Login" id="SUBMITORDER" style="position:relative;right: 216px;margin-top: 50px;border-radius: 6px;" onclick="redirect()">
+      </div>
+
+
+    </div>
+
+
+
+
+    <script type="text/javascript">
+      function address()
+      {
+        window.location.href="/addnew";
+      }
+      function menu()
+      {
+        window.location.href="/";
+      }
+      function confirm()
+      {
+        window.location.href="/confirmorder";
+      }
+      function immediate()
+      {
+        var date = Date();
+        document.getElementById("id_date").value=date;
+      }
+      function future()
+      {
+        var date = $("#date").val();
+        document.getElementById("id_date").value=date;
+      }
+
+      function redirect()
+      {
+        window.location.href="#"
+      }
+
+      function onclick_edit(rid)
+      {
+        console.log(rid);
+        var aa = rid+"_1";
+        var ab = rid+"_2";
+        document.getElementById(aa).style.display = "block";
+        document.getElementById(ab).style.display = "none";
+      }
+      function submit_comment (rid) {
+        // body...
+        var aa = rid+"_1";
+        var ab = rid+"_2";
+        document.getElementById(aa).style.display = "none";
+        document.getElementById(ab).style.display = "inline";
+      }
+      
+
+      function decrease(itemid, price, orderid)
+    {
+
+      var id = String(itemid) + String(itemid) 
+      var q = $("#"+String(id)).val();
+       if (q <= 1)
+       {
+        q = 1;
+        var  p = Number(price)*Number(q);
+        // document.getElementById("id_quantity"+itemid).value=q;
+        // document.getElementById(itemid).innerHTML=String(p);
+      $.ajax({url: "/changeitem?itemid="+itemid+"&price="+p+"&quantity="+q+"&orderid="+orderid, success: function(result){
+            $("#id_total").html(result);
+        }});
+
+       }
+       else
+       {
+        q = Number(q) - Number(1);
+        var  p = Number(price)*Number(q);
+        document.getElementById(id).value=q;
+        var priceid = String(itemid)+ String(price);
+        var priceid1 = String(itemid)+ String(price) + "_1";
+        document.getElementById(priceid).innerHTML=String(p);
+        document.getElementById(priceid1).innerHTML=String(p);
+        $.ajax({url: "/changeitem?itemid="+itemid+"&price="+p+"&quantity="+q+"&orderid="+orderid, success: function(result){
+            $("#id_total").html(result);
+        }});
+
+      }
+
+      
+      }
+
+    function increase(itemid, price, orderid)
+    {
+      var id = String(itemid) + String(itemid) 
+      var q = $("#"+String(id)).val();
+      q = Number(q) + Number(1);
+      var  p = Number(price)*Number(q);
+      var priceid = (String(itemid)+ String(price));
+      var priceid1 = (String(itemid)+ String(price) + "_1");
+      document.getElementById(priceid).innerHTML=String(p);
+      document.getElementById(priceid1).innerHTML=String(p);
+      document.getElementById(id).value=q;
+
+      $.ajax({url: "/changeitem?itemid="+itemid+"&price="+p+"&quantity="+q+"&orderid="+orderid, success: function(result){
+            $("#id_total").html(result);
+        }});
+
+    }
+
+
+
+
+
+    </script>
+  <!--selections ends here -->
+{% endblock%}

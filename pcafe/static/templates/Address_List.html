@@ -1,0 +1,53 @@
+{% extends "base2.html" %}
+{% block content%}
+<div class="add_address">
+       <a href="/address" class="add">My Locations</a>
+       
+       
+       </div>
+    <div class="register_headings">
+      <div>
+      <h2 class="register_heading">My Delivery Locations</h2>
+    <p class="para_register">From here you may add new delivery locations</p>
+     </div>
+     <table border="1" style="width:620px;border-collapse:collapse;" cellspacing="0">
+      <tbody>
+      <tr style="background:#">
+        <th class="colspecs" align="center">Address</th>
+        <th class="colspecs" align="center">Phone</th>
+        <th class="colspecs" align="center">City</th>
+        <th class="colspecs" align="center">Primary Address</th>
+        <th class="colspecs" align="center">Options</th>
+      </tr>
+      {% for adobj in addressobj%}
+      <tr>
+        <center>
+        <td align="center">{{adobj.address}}</td>
+        <td align="center">{{adobj.phone}}</td>
+        <td align="center">{{adobj.city}}</td>
+        <td align="center">{{adobj.is_primary}}</td>
+        <td align="center"><a href="javascript:EditAddress({{adobj.id}})">edit</a> <a href="javascript:DeleteAddress({{adobj.id}})">delete</a></td>
+        </center>
+      </tr>
+      {% endfor %}
+      </tbody>
+     </table>
+     <div style="float:left;margin-left:90px;">
+     <input value="Add New" id="ContentPlaceHolder1_btnAddNew" type="submit" style="background:#353535;color:#fff;width:100px;height:30px;  border-radius: 6px;" onclick="redirect()">
+     </div>
+     </div>
+     <script type="text/javascript">
+      function redirect()
+      {
+        window.location.href="/addnew";
+      }
+      function EditAddress(id)
+      {
+        window.location.href = "/editaddress?add_id=" + id;
+      }
+      function DeleteAddress(id)
+      {
+        window.location.href = "/deleteaddress?add_id=" + id;
+      }
+    </script>
+{% endblock%}

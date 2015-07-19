@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+
+<title>Pantry Cafe</title>
+
+
+
+<link rel="stylesheet" type="text/css" media="screen" href="/static/styles/main_css.css" />
+
+<link rel="stylesheet" type="text/css" media="screen" href="/static/styles/register_css.css" />
+<link rel="stylesheet" href="/static/styles/confirmation_css.css">
+
+
+
+
+<script type="text/javascript">
+       $(window).load(function () {
+         
+           $("#tempCateories").stick_in_parent();
+           
+           $("#stick_me").stick_in_parent();
+       });
+    
+  </script>
+  
+  
+</head>
+
+
+
+<body>
+
+  
+    
+    
+    
+    <div style="margin:20px;">
+    
+ 
+   
+ 
+   
+    
+       
+     
+    
+     
+    
+      <!-- <p class="from_check" style="  width: 507px;">FROM: Pantry Cafe </p> -->
+      
+     
+      <p class="Product">Product</p>
+      <p class="Price">Price (AED)</p>
+      <p class="Quantity">Quantity</p>
+      <p class="Total">Total (AED)</p>
+      <div style="clear:both;"></div>
+      
+      
+      {% for order in order_history %}
+      <p class="Product2">{{order.name}}</p>
+      <p class="Price3">{{order.price}}</p>
+      <p class="Quantity4">{{order.quantity}}</p>
+      <p class="Total5">{{order.price}}*{{order.quantity}}</p>
+      <div style="clear:both;"></div>
+      <div style="clear:both;"></div>
+      {% endfor %}
+
+      <p class="Product21">Food Total</p>
+      <p class="Price32"></p>
+      <p class="Quantity42" style="  padding: 5px;">{{total}}</p>
+      
+      <div style="clear:both;"></div>
+      
+      <p class="Product21">Delivery Charges</p>
+      <p class="Price32"></p>
+      <p class="Quantity42" style="  padding: 5px;">5</p>
+      
+      <div style="clear:both;"></div>
+     
+      <p class="Product21" style="color: #333333;">Grand Total</p>
+      <p class="Price32"></p>
+      <p class="Quantity42" style="  padding: 5px;">{{gtotal}}</p>
+      <div style="clear:both;"></div> 
+      
+      
+      
+      
+     <!--  <p class="last_rigister" style="float: left;">YOUR TOTAL FOR THIS ORDER:    83 AED</p> -->
+      <div style="clear:both;"></div> 
+      
+       
+       
+       
+
+
+  </div>
+
+
+
+
+
+    
+   
+      
+      
+
+
+
+<script src="/static/js/datepicker_jquery.js"></script>  
+  <script src="/static/js/datepicker.js"></script>  
+
+
+
+</body>
+</html>

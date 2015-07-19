@@ -1,0 +1,118 @@
+{%extends "base.html"%}
+    {% block content%}
+    
+    <div id="content_home">
+    
+    <div class="register_headings">
+     <h2 class="contact_heading">CONTACT US </h2>
+<h3 class="address_contact">PANTRY CAFÉ, WASL SQUARE </h3>
+<span class="address_under_contact">Al Hadeeqa Street, Jumeirah, Dubai - UAE</br>
++971 4 388 3868</br>
+* info@abc-uae.com</span>
+
+
+
+
+
+
+
+
+<h2 class="con_us_form">CONTACT US FORM</h2>
+
+<p class="con_us_form_bot">Use the form below to submit any questions you may have regarding our service or to obtain an PANTRYCAFE directory.</p>
+     </div>
+     
+     <div class="left_labels">
+     <label class="label_left">First Name:</label>
+     
+     </br>
+     
+     <label class="label_left">Last Name:</label>
+      </br>
+     
+       <label class="label_left">Company / Organization:</label>
+      </br>
+  
+     
+     <label class="label_left">Email:</label>
+      </br>
+  
+ 
+  
+     
+
+   
+
+ 
+  
+  
+      </br>
+     <label class="label_left">Mobile:</label>
+    
+ 
+      </br>
+      
+     
+       <label class="label_left">PO Box:</label>
+    
+ 
+      </br>
+      
+   
+        <label class="label_left">Comments:</label>
+    
+ 
+      </br>
+      
+      
+     </div>
+     <form action="/contactus" method="post">
+      {% csrf_token %}
+      <div class="right_inputs">
+      <input type="text" class="input_register" name="firstname" placeholder="First Name" required data-fv-notempty-message="The name is required" pattern="[a-zA-Z]+[a-zA-Z]+" ></input>
+      </br>
+       <input type="text" class="input_register" name="lastname"  placeholder="Last Name" required data-fv-notempty-message="The name is required" pattern="[a-zA-Z]+[a-zA-Z]+" />
+       </br>
+     
+       <input type="text" class="input_register" name="company"  placeholder="Company/Organization" required data-fv-notempty-message="The name is required"  />
+       </br>
+      
+       <input required type="email" id='p1' name="email" id="email" class="input_register" placeholder="Email">
+       </br>
+
+       <input type="tel" class="input_register" required  class="input_register" pattern="[0-9]+" placeholder="Phone Number" name="phone"></input>
+      </br>
+       <input type="text" class="input_register" name="pobox"  placeholder="POBox" required data-fv-notempty-message="The name is required" />
+  
+    </br>
+    
+        <textarea rows="2" cols="20"  class="input_register" style="height:80px;width:299px;" placeholder="Comments" name="comments"></textarea>
+    
+     </br>
+    
+      <button  type="submit" id="button_register" required class="register_button" name="submit" value="Submit Registration" class="submit_desk" style="background-color: #333333;color: #fff;padding: 5px;border-radius: 8px;font-family: arial;font-size: 14px;width: 100px;" required data-fv-notempty-message="The name is required"/>Submit</button>
+      
+      </div>
+     
+    </form>
+  <script>
+
+var password = document.getElementById("password")
+  , confirm_password = document.getElementById("confirm_password");
+
+function validatePassword(){
+  if(password.value != confirm_password.value) {
+    confirm_password.setCustomValidity("Passwords Don't Match");
+  } else {
+    confirm_password.setCustomValidity('');
+  }
+}
+
+password.onchange = validatePassword;
+confirm_password.onkeyup = validatePassword;
+
+
+</script>
+     
+    </div>
+    {% endblock %}

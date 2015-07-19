@@ -1,0 +1,314 @@
+{%extends "base2.html"%}   
+{%block content%}
+ <!-- selections starts-->
+   
+    <div id="content_home">
+
+      <div id="left_details">
+        <h2 class="account">ACCOUNT DETAILS</h2>
+
+      </div>
+
+      <div id="right_details" style="width: 735px;">
+        <h2 class="order_profile">ORDER SUMMARY</h2>
+          <table>
+            <col /><col /><col />
+            <tr>
+                <th class="col">Product</th>
+                <th class="col">Price (AED)</th>
+                <th class="col">Quantity</th>
+                <th class="col">Total (AED)</th>
+                <th class="col">Special Request</th>
+            </tr>
+            {% for itemobj in items%}
+            <tr>
+                <td>
+                  {{itemobj.name}}
+                </td>
+                <td style="text-align: right;">
+                  <div id="{{itemobj.item_id}}{{itemobj.price}}">{{itemobj.price}}</div>
+                </td>
+                <td>
+                  <input type="text" value="{{itemobj.quantity}}" style="width: 25px;height: 20px;position:relative;bottom: 0px;border-radius: 0px;box-shadow: none;border: 0px;" id="{{itemobj.item_id}}{{itemobj.item_id}}">
+                  <input class="btn_delete_from_cart" value="-" type="button" style="position: relative; right: 22px;" onclick="decrease({{itemobj.item_id}},{{itemobj.actual_price}}, {{itemobj.order_id}})">
+                  <input class="btn_add_to_cart" value="+" type="button" style="position: relative;right: 19px;" onclick="increase({{itemobj.item_id}},{{itemobj.actual_price}}, {{itemobj.order_id}})">
+                  <form action="/deleteorder" method="POST">
+                  {% csrf_token %}
+                  <input type="hidden" value="{{itemobj.order_id}}" name="orderid">
+                  <input type="hidden" value="{{itemobj.item_id}}" name="itemid">
+                  <input type="hidden" value="1" name="checkout">
+                  <input type="submit" value="x" style="position: relative;left: 69px; width: 14px; height: 20px;font-size: 11px;  top: -20px;border:medium none;background: none repeat scroll 0% 0% #333;color: #FFF;bottom: 1px;cursor:pointer;">
+                  </form>
+                </td>
+                <td style="text-align: right;">
+                 <div id="{{itemobj.item_id}}{{itemobj.price}}_1"> {{itemobj.price}} </div>
+                </td>
+                <td style="width: 30%;">
+                  <div id="{{itemobj.item_id}}">
+                    <p id="{{ itemobj.item_id }}_2" onclick="onclick_edit({{itemobj.item_id}})" style="">
+                      <a>Add Request</a>
+                    </p>
+                  </div>
+                  <div id="{{ itemobj.item_id }}_1" style="display: none;">
+                    <input type="text" id="request{{itemobj.id}}" name="comment" style="width: 128px;padding: 3px;"></input>
+                    
+                    <input type="submit" id="Submit_comment" onclick="submit_comment({{ itemobj.item_id }},{{itemobj.id}})" value="Update">
+                  </div>
+                  <div id="add_req{{itemobj.id}}"><b></b></div>
+                </td>
+            </tr>
+            {% endfor %}
+          </table>
+          <table style="margin-top: -3px;width: 509px;">
+            <tr>
+              <td style="width: 405px;"><b>Food Total</b></td>
+              <td style="text-align: right;">
+                <input type="hidden" value="{{total}}" id="total">
+                <b>{{total}}</b>
+              </td>
+            </tr>
+            <tr>
+              <td><b>Delivery Charge</b></td>
+              <td style="text-align: right;">
+                <input type="hidden" value="{{total}}" id="total">
+                <b>5</b>
+              </td>
+            </tr>
+
+            <tr>
+              <td><b>TOTAL</b></td>
+              <td style="text-align: right;">
+                <input type="hidden" value="{{total}}" id="total">
+               <div id="id_total"><b>{{grandtotal}}</b></div>
+              </td>
+            </tr>
+          </table>
+     
+
+        <!-- <p class="last_rigister" style="margin-right: 125px;">YOUR TOTAL FOR THIS ORDER: &nbsp;&nbsp;&nbsp;    {{grandtotal}} AED</p>
+        <div style="clear:both;"></div> 
+         <p class="last_rigister2" style="margin-right: 125px;">REWARDS: &nbsp;&nbsp;&nbsp    0 AED</p> -->
+        <div class="border">
+          <h4 class="payment">Payment Method</h4>
+          <input id="option" type="radio" name="checkbox1" value="" checked="checked">
+          <label for="contentplaceHolder">Cash on Delivery</label>
+       
+          <input id="option" type="radio" name="checkbox1" value="" checked="checked">
+          <label for="contentplaceHolder">Credit Card
+          </label>
+        </div>
+
+        <form action="/confirmorder" method="post">
+          {%csrf_token%}
+          <div class="border">
+               <h4 class="delivery">Delivery</h4>
+               <input id="option" type="radio" name="checkbox2" value="" checked="checked" onClick="immediate()">
+               <label for="contentplaceHolder">Immediate</label>
+               <input type="hidden" value="" id="id_date">
+                <input id="option" type="radio" name="checkbox2" value="" checked="checked" onClick="future()">
+               <label for="contentplaceHolder">Deliver Later:</label>
+          </div>
+          <div class="border">
+            <input type="text" placeholder="Enter Date or select from button" class="input_register" name="date" id="date" data-select="datepicker" style="width:277px;box-shadow: none !important;">
+                  <span class="input-group-btn"><button type="button" class="btn btn-primary" data-toggle="datepicker" style="position: relative;right: 322px;" onclick="future()"><i class="fa fa-calendar"></i></button></span>
+            <select name="Time" id="option" style="height:35px">
+                <option selected="selected" value="13:00" >13:00</option>
+                <option value="13:30">13:30</option>
+                <option value="14:00">14:00</option>
+                <option value="14:30">14:30</option>
+                <option value="15:00">15:00</option>
+                <option value="15:30">15:30</option>
+                <option value="16:00">16:00</option>
+                <option value="16:30">16:30</option>
+                <option value="17:00">17:00</option>
+                <option value="17:30">17:30</option>
+                <option value="18:00">18:00</option>
+                <option value="18:30">18:30</option>
+                <option value="19:00">19:00</option>
+                <option value="19:30">19:30</option>
+                <option value="20:00">20:00</option>
+                <option value="20:30">20:30</option>
+                <option value="21:00">21:00</option>
+                <option value="21:30">21:30</option>
+                <option value="22:00">22:00</option>
+                <option value="22:30">22:30</option>
+                <option value="23:00">23:00</option>
+                <option value="23:30">23:30</option>
+
+              </select>
+          </div>
+
+        <h4 class="location">Select Location</h4>
+        <table style="margin-top: -3px;">
+          <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Phone</th>
+          </tr>
+          {% for addobj in addresslist.values %}
+          <tr>
+            <td>
+              <input id="" type="radio" name="location" value="" checked="checked" style="float: left;">
+            </td>
+            <td>
+              {% for ad in addobj%}
+                <p style="margin-bottom: 3px;">{{ad}}</p>
+              {% endfor %}
+            </td>
+            <td>
+              
+            </td>
+          </tr>
+          {% endfor %}
+        </table>
+        <!-- <ul class="select_cata">
+
+        <li>Name</li>
+        <li>Address</li>
+        <li>Phone</li>
+        <div style="clear:both;"></div>
+        </ul>
+
+        {% for addobj in addresslist.values %}
+          <div class="list_select">
+          {{ addobj }}
+            <input id="" type="radio" name="location" value="" checked="checked" style="float: left;">
+            {% for ad in addobj%}
+              <span class="address_list" style="margin-left: 60px;">{{ad}}</span>
+            {% endfor %}
+          </div>
+
+        {% endfor %} -->
+        <input type="button" name="AddAddress" value="Add Address" id="AddAddress" onclick="address()">
+        <input type="button" name="ReturnToMenu" value="Return To Menu" id="ReturnToMenu" onclick="menu()">
+
+        <input type="submit" name="SUBMITORDER" value="SUBMIT ORDER" id="SUBMITORDER">
+      </div>
+      
+      
+      </form>
+     
+     
+    </div>
+      </div>
+
+
+    </div>
+
+
+
+
+    <script type="text/javascript">
+      function address()
+      {
+        window.location.href="/addnew";
+      }
+      function menu()
+      {
+        window.location.href="/";
+      }
+      function confirm()
+      {
+        window.location.href="/confirmorder";
+      }
+      function immediate()
+      {
+        var date = Date();
+        document.getElementById("id_date").value=date;
+      }
+      function future()
+      {
+        var date = $("#date").val();
+        document.getElementById("id_date").value=date;
+      }
+
+      function redirect()
+      {
+        window.location.href="#"
+      }
+
+      function onclick_edit(rid)
+      {
+        console.log(rid);
+        var aa = rid+"_1";
+        var ab = rid+"_2";
+        document.getElementById(aa).style.display = "block";
+        document.getElementById(ab).style.display = "none";
+      }
+      function submit_comment (rid,itemid) {
+        // body...
+        var aa = rid+"_1";
+        var ab = rid+"_2";
+        document.getElementById(aa).style.display = "none";
+        document.getElementById(ab).style.display = "inline";
+        var txt = document.getElementById('request'+itemid).value;
+        alert(itemid)
+        $.ajax({url: "/addrequest?item_id="+itemid+"&text="+txt,
+         success: function(result){
+            $("#add_req"+itemid).html(result);
+        }});
+        $("#Submit_comment").hide();
+        $("#"+rid+"_2").hide();
+      }
+      
+
+     function decrease(itemid, price, orderid)
+    {
+
+      var id = String(itemid) + String(itemid) 
+      var q = $("#"+String(id)).val();
+       if (q <= 1)
+       {
+        q = 1;
+        var  p = Number(price)*Number(q);
+        // document.getElementById("id_quantity"+itemid).value=q;
+        // document.getElementById(itemid).innerHTML=String(p);
+      $.ajax({url: "/changeitem?itemid="+itemid+"&price="+p+"&quantity="+q+"&orderid="+orderid, success: function(result){
+            $("#id_total").html(result);
+        }});
+
+       }
+       else
+       {
+        q = Number(q) - Number(1);
+        var  p = Number(price)*Number(q);
+        document.getElementById(id).value=q;
+        var priceid = String(itemid)+ String(price);
+        var priceid1 = String(itemid)+ String(price) + "_1";
+        document.getElementById(priceid).innerHTML=String(p);
+        document.getElementById(priceid1).innerHTML=String(p);
+        
+        $.ajax({url: "/changeitem?itemid="+itemid+"&price="+p+"&quantity="+q+"&orderid="+orderid, success: function(result){
+            $("#id_total").html(result);
+        }});
+
+      }
+
+      
+      }
+
+    function increase(itemid, price, orderid)
+    {
+      var id = String(itemid) + String(itemid) 
+      var q = $("#"+String(id)).val();
+      q = Number(q) + Number(1);
+      var  p = Number(price)*Number(q);
+      var priceid = (String(itemid)+ String(price));
+      var priceid1 = (String(itemid)+ String(price) + "_1");
+      document.getElementById(priceid).innerHTML=String(p);
+      document.getElementById(priceid1).innerHTML=String(p);
+      document.getElementById(id).value=q;
+
+      $.ajax({url: "/changeitem?itemid="+itemid+"&price="+p+"&quantity="+q+"&orderid="+orderid, success: function(result){
+            $("#id_total").html(result);
+        }});
+
+
+    }
+
+
+
+
+    </script>
+  <!--selections ends here -->
+{% endblock%}

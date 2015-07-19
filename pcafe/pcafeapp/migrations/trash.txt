@@ -1,0 +1,82 @@
+# class PizzaMenuTable(models.Model):
+#     item_id = models.AutoField(primary_key=True)
+#     cat_id = models.ForeignKey(Categories)
+#     item_name = models.CharField(max_length=50, blank=True, null=True)
+#     ingrediants = models.CharField(max_length=200, default="")
+#     price_small = models.CharField(max_length=25)
+#     price_medium = models.CharField(max_length=25)
+#     price_large = models.CharField(max_length=25)
+#     item_code = models.CharField(max_length=30)
+
+#     def __unicode__(self):
+#         return smart_unicode(self.item_id)
+
+# class BreakfastMenu(models.Model):
+#     breakfast_id = models.AutoField(primary_key=True)
+#     cat_id = models.ForeignKey(Categories)
+#     breakfast_name = models.CharField(max_length=25, blank=True, null=True)
+#     ingrediants = models.CharField(max_length=1000, default="")
+#     price = models.CharField(max_length=25)
+#     item_code = models.CharField(max_length=15, default="")
+#     def __unicode__(self):
+#         return smart_unicode(self.breakfast_id)
+
+# class Soups_Salads_Menu(models.Model):
+#     ss_id = models.AutoField(primary_key=True)
+#     cat_id = models.ForeignKey(Categories)
+#     ss_name = models.CharField(max_length=50, blank=True, null=True)
+#     ingrediants = models.CharField(max_length=1000,default="")
+#     price = models.CharField(max_length=25, blank=True, null=True)
+#     item_code = models.CharField(max_length=15, default="")
+#     def __unicode__(self):
+#         return smart_unicode(self.ss_id)
+
+# class Sharables(models.Model):
+#     share_id = models.AutoField(primary_key=True)
+#     cat_id = models.ForeignKey(Categories)
+#     share_name = models.CharField(max_length=25, default="")
+#     ingrediants = models.CharField(max_length=1000,default="")
+#     price = models.IntegerField()
+#     item_code = models.CharField(max_length=15, default="")
+#     def __unicode__(self):
+#         return smart_unicode(self.share_id)
+
+# class Sandwitches_Burgers(models.Model):
+#     sb_id = models.AutoField(primary_key=True)
+#     cat_id = models.ForeignKey(Categories)
+#     sb_name= models.CharField(max_length=25, default="")
+#     ingrediants = models.CharField(max_length=1000,default="")
+#     price = models.IntegerField()
+#     item_code = models.CharField(max_length=15, default="")
+#     def __unicode__(self):
+#         return smart_unicode(self.sb_id)
+
+# class Mains(models.Model):
+#     main_id = models.AutoField(primary_key=True)
+#     cat_id = models.ForeignKey(Categories)
+#     main_name= models.CharField(max_length=25, default="")
+#     ingrediants = models.CharField(max_length=1000,default="")
+#     price = models.IntegerField()
+#     item_code = models.CharField(max_length=15, default="")
+#     def __unicode__(self):
+#         return smart_unicode(self.main_id)
+
+# class Kids_Meals(models.Model):
+#     km_id = models.AutoField(primary_key=True)
+#     cat_id = models.ForeignKey(Categories)
+#     km_name= models.CharField(max_length=25, default="")
+#     ingrediants = models.CharField(max_length=1000,default="")
+#     price = models.IntegerField()
+#     item_code = models.CharField(max_length=15, default="")
+#     def __unicode__(self):
+#         return smart_unicode(self.km_id)
+
+# class Sides(models.Model):
+#     side_id = models.AutoField(primary_key=True)
+#     cat_id = models.ForeignKey(Categories)
+#     side_name= models.CharField(max_length=25, default="")
+#     ingrediants = models.CharField(max_length=1000,default="")
+#     price = models.IntegerField()
+#     item_code = models.CharField(max_length=15, default="")
+#     def __unicode__(self):
+#         return smart_unicode(self.side_id)

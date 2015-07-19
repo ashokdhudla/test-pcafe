@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="register_headings">
+      <div>
+      <h2 class="register_heading">Guest Book</h2>
+    <p class="para_register">Thank you for taking the time to share your experience with us
+</p>
+<p class="para_register">Fill Form To Submit Feedback or comments 
+</p>
+     </div>
+       <div class="left_labels">
+     <label class="label_left">First Name:</label>
+     
+     </br>
+     
+     <label class="label_left">Last Name:</label>
+      </br>
+      
+      <label class="label_left">Email:</label>
+      </br> 
+      <label class="label_left">Comments:</label>
+      </br> 
+      
+     </div>
+     <form action="/feedback" method="POST">
+     <div class="right_inputs">
+          {% csrf_token %}
+      <input type="text" class="input_register" name="firstname" placeholder="First Name" required data-fv-notempty-message="The name is required"></input>
+      </br>
+      <input type="text" class="input_register" required  class="input_register" name="lastname" placeholder="Last Name" value="{{add_details.phone}}"></input>
+      </br>
+        <input required type="email" id='p1' name="email" id="email" class="input_register" placeholder="Email id">
+       </br>
+      </br>   
+      <textarea name="message" style="width:306px;height:100px" class="input_login" placeholder="Type your message" required data-fv-notempty-message="the email is not requried"></textarea>
+    </br>
+      <div style="float:left">
+     <input value="Submit" id="ContentPlaceHolder1_btnAddNew" type="submit" style="background:#353535;color:#fff;width:78px;height:30px;border-radius:6px; margin-left:0px;">
+     </div>
+     <div style="float:right">
+     <!-- <input value="View Guestbook" id="ContentPlaceHolder1_btnAddNew" type="submit" style="background:#353535;color:#fff;width:130px;height:30px;border-radius:6px; margin-right:214px;"> -->
+     </div>
+   </form>
+   <script type="text/javascript">
+    function isTrue()
+    {
+      if(document.getElementById('id_primary').checked) 
+      {
+        document.getElementById('id_primary').value="True"; 
+      }
+      else
+      {
+        document.getElementById('id_primary').value = "False";
+      }
+    }
+   </script>
+{% endblock %}

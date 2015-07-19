@@ -1,0 +1,102 @@
+.div_faq_category
+{
+    display: block;
+    width: 80%;
+    border: 0px solid green;
+    margin-bottom: 15px;
+}
+.div_faq_category a
+{
+    color: #EC450E;
+    font-weight: bold;
+    text-decoration: none;
+}
+.div_faq_category a:hover
+{
+    color: #57372A;
+}
+.div_faq_category label
+{
+    color: #57372A;
+}
+
+.div_faq_category span
+{
+    color: #57372A;
+}
+.staic_pages_wrapper
+{
+    width: 900px;
+    height: auto; /*403px*/
+    position: relative;
+    overflow: hidden;
+    margin: 10px auto 60px auto; /*background: url(../images/background/bg_registration.jpg) no-repeat 0 0;*/
+}
+ul.order_ul_style
+{
+    list-style: disc;
+    margin-left: 20px;
+}
+ul.order_ul_style li
+{
+}
+#ticker a, #updates_diecory a
+{
+    text-decoration: none;
+    color: #666;
+}
+#updates_diecory a
+{
+    margin-top: 30px;
+}
+#view_guest_book_wrapper
+{
+    width: 778px;
+    height: auto; /*403px*/
+    position: relative;
+    overflow: hidden;
+    margin: 10px auto 60px auto; /*background: url(../images/background/bg_registration.jpg) no-repeat 0 0;*/
+}
+
+ul.rest_client_listing
+{
+    list-style: none;
+    width: 100%;
+    height: auto;
+    border: 0px solid red;
+}
+ul.rest_client_listing li
+{
+    border: 0px solid red;
+    display: inline-block;
+    margin-left: 00px;
+    width: 160px;
+    height: 120px;
+    position: relative;
+}
+
+#ContentPlaceHolder1_ctl01
+{
+    width: 156px;
+    position: relative;
+    border: 0px solid red;
+    float: left;
+    vertical-align: top;
+}
+#ContentPlaceHolder1_ctl01 input[type="text"]
+{
+    margin: 0;
+}
+#top_social
+{
+    width: 400px;
+    float: left;
+    position:relative;
+    margin-left: 308px;
+    margin-top:6px;
+    color:#fff;
+}
+#top_social span
+{
+    
+}
